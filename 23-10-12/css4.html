@@ -1,0 +1,37 @@
+<!-- position 속성값 중 sticky 활용 -->
+<!-- 초록색 박스가 스크롤 하는 과정에서 top이 0이 되는 시점부터 위치가 고정된다. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>position 속성 - sticky</title>
+    <style>
+        body{
+            margin: 0px;
+            height: 4000px;
+        }
+        .box{
+            width:100px;
+            height: 100px;
+        }
+        .red-box{
+            background-color: red;
+        }
+        .green-box{
+            background-color: green;
+            position: sticky;
+            top: 0;
+        }
+        .blue-box{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="box red-box"></div>
+    <div class="box green-box"></div>
+    <div class="box blue-box"></div>
+</body>
+</html>
