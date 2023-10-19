@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>position_exam</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
+
+        .div{
+            /* 요소 기준점 : 요소의 왼쪽 모서리 */
+            position:relative; 
+        }
+
+        .yellow-box{
+            width:800px;
+            height: 370px;
+            position:relative;
+            left:720px;
+            background-color:yellow;
+            border : solid 2px;
+            border-color: black;
+        }
+
+        .blue-box{
+            width:150px;
+            height: 150px;
+            background-color:blue;
+            /* 요소 기준점 : yello-box(부모) 요소 기준 왼쪽 모서리 */
+            position:absolute;
+            left:360px;
+            top:40px;
+            z-index: 1;
+            border : solid 2px;
+            border-color: black;
+        }
+
+        .red-circle{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            /* 요소 기준점 : yello-box(부모) 요소 기준 왼쪽 모서리 */
+            position:absolute;
+            left:420px;
+            top:130px;
+            z-index: 2;
+            border-radius: 50%;
+            border : solid 2px;
+            border-color: black;
+        }
+
+        .flex-container{
+            /* 요소 기준점 : 직전 요소가 끝난 지점 */
+            position:relative;
+            display:flex;
+            flex-direction: row;
+    
+        }
+        .flex-item{
+            margin-top: 50px;
+            width: 250px;
+            height: 30px;
+            border : solid 2px;
+            font-family: 'Nanum Myeongjo', serif;
+            font-size: 2em;
+        }
+
+        .flex-item:nth-child(1){
+            background-color:coral;
+            flex-basis: 380px;
+        }
+
+        .flex-item:nth-child(2){
+            background-color: cornflowerblue;
+            flex-basis: 630px;
+        }
+
+        .flex-item:nth-child(3){
+            background-color: cornsilk;
+            flex-basis: 250px;
+        }
+
+        .flex-item:nth-child(4){
+            background-color: crimson;
+            flex-basis: 250px;
+        }
+        
+        .grid-container{
+            display:grid;
+            position:relative;
+            top: 50px;
+            grid-template-columns: 380px 380px 380px 380px;
+        }
+
+        .grid-item{
+            border : solid 2px black;
+            font-family: 'Nanum Myeongjo', serif;
+            font-size: 2em;
+        }
+
+        .grid-item:nth-child(1){ /* A */
+            grid-row:1/4;
+            height: 400px;
+            background-image: url('./nongdam1.jpeg');
+            background-repeat: no-repeat;
+            background-size: 110%;
+        }
+
+        .grid-item:nth-child(2){ /* B */
+            grid-column: 2/5;
+            background-image: url("./space1.jpeg");
+            background-repeat: no-repeat;
+            background-size: 100%;
+            color:white;
+        }
+
+        .grid-item:nth-child(3){ /* C */
+            grid-row:2/4;
+            background-image: url("./space3.jpeg");
+            background-repeat: no-repeat;
+            background-size: 120%;
+            color:white;
+        }
+
+        .grid-item:nth-child(4){ /* D */
+            grid-row: 2/3; 
+            background-image: url("./space4.jpeg");
+            background-repeat: no-repeat;
+            background-size: 100%;
+            color:white;
+
+        }
+
+        .grid-item:nth-child(5){ /* E */
+            grid-row:3/4;
+            background-image: url("./space5.jpeg");
+            background-repeat: no-repeat;
+            background-size: 100%;
+            color:white;
+        }
+
+        .grid-item:nth-child(6){ /* F */
+            grid-row: 2/5;
+            height: 400px;
+            background-image: url("./nongdam6.jpeg");
+            background-repeat: no-repeat;
+            background-size: 107%;
+        }
+
+        .grid-item:nth-child(7){ /* G */
+            grid-column: 1/4;
+            background-image: url("./space6.jpeg");
+            background-repeat: no-repeat;
+            background-size: 100%;
+            color:white;
+        }
+
+        #A{
+            position: relative;
+            top:180px;
+        }
+
+        #B{
+            position: relative;
+            top:48px;
+        }
+
+        #C{
+            position: relative;
+            top:120px;
+        }
+
+        #D{
+            position: relative;
+            top:100px;
+        }
+
+        #E{
+            position: relative;
+            top:100px;
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <div class="div">
+        <div class="yellow-box">
+            <div class="blue-box"></div>
+        <div class="red-circle"></div>
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item">A</div>
+        <div class="flex-item">B</div>
+        <div class="flex-item">C</div>
+        <div class="flex-item">D</div>
+    </div>
+    <div class="grid-container">
+        <div class="grid-item"><span id="A">A</span></div>
+        <div class="grid-item"><span id="B">B</span></div>
+        <div class="grid-item"><span id="C">C</span></div>
+        <div class="grid-item"><span id="D">D</span></div>
+        <div class="grid-item"><span id="E">E</span></div>
+        <div class="grid-item">F</div>
+        <div class="grid-item">G</div>
+    </div>
+</body>
+</html>
