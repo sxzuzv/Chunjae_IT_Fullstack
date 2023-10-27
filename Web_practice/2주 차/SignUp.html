@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>회원가입</title>
+    <h1 align="center">회원가입</h1>
+    <style type = 'text/css'>
+    textarea {
+        vertical-align : middle;
+    }
+    </style>
+    <style>
+        #tel{
+            width:100px;
+        }
+    </style>
+    <style>
+        #email{
+            width:135px;
+        }
+    </style>
+    <style>
+        #year{
+            width:50px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <form action="#" method="post">     
+        <table align="center">
+            <tr>
+                <td><strong>성명</strong><input type = "text" name = "name" style="margin-left:70px" autofocus></td>
+            </tr>
+            <tr>
+                <td><strong>생년월일</strong>
+                    <input type="text" name="year" style="margin-left: 33px;" id="year">년
+                    <select>
+                        <option value = "m1">1</option>
+                            <option value = "m2">2</option>
+                            <option value = "m3">3</option>
+                            <option value = "m4">4</option>
+                            <option value = "m5">5</option>
+                            <option value = "m6">6</option>
+                            <option value = "m7">7</option>
+                            <option value = "m8">8</option>
+                            <option value = "m9">9</option>
+                            <option value = "m10">10</option>
+                            <option value = "m11">11</option>
+                            <option value = "m12">12</option>
+                        </select>월
+                        <select>
+                            <option value = "d1">1</option>
+                            <option value = "d2">2</option>
+                            <option value = "d3">3</option>
+                            <option value = "d4">4</option>
+                            <option value = "d5">5</option>
+                            <option value = "d6">6</option>
+                            <option value = "d7">7</option>
+                            <option value = "d8">8</option>
+                            <option value = "d9">9</option>
+                            <option value = "d10">10</option>
+                            <option value = "d11">11</option>
+                            <option value = "d12">12</option>
+                            <option value = "d13">13</option>
+                            <option value = "d14">14</option>
+                            <option value = "d15">15</option>
+                            <option value = "d16">16</option>
+                            <option value = "d17">17</option>
+                            <option value = "d18">18</option>
+                            <option value = "d19">19</option>
+                            <option value = "d20">20</option>
+                            <option value = "d21">21</option>
+                            <option value = "d22">22</option>
+                            <option value = "d23">23</option>
+                            <option value = "d24">24</option>
+                            <option value = "d25">25</option>
+                            <option value = "d26">26</option>
+                            <option value = "d27">27</option>
+                            <option value = "d28">28</option>
+                            <option value = "d29">29</option>
+                            <option value = "d30">30</option>
+                            <option value = "d31">31</option>
+                            </select>일
+            </tr>
+            <tr>
+                <td><strong>성별</strong><input style="margin-left:70px" type="radio" name="gender" value="female">여성 
+                <input type="radio" name="gender" value="male">남성 </td>
+            </tr>
+            <tr>
+                <td><strong>아이디</strong> <input type = "text" name = "id"   style="margin-left:50px"></td>
+            </tr>    
+            <tr>
+                <td><strong>비밀번호</strong> <input type = "password" name = "password" style="margin-left:35px"></td>
+            </tr>
+            <tr>
+                <td><strong>비밀번호 확인</strong><input type = "password" name = "password_check" style="margin-left:3px"></td>
+            </tr>
+            <tr>
+                <td><strong>전화번호</strong>
+                    <select style="margin-left:33px">
+                    <option value = "1">02</option>
+                    <option value = "2">031</option>
+                    <option value = "3">032</option>
+                    <option value = "4">033</option>
+                    <option value = "5">041</option>
+                    <option value = "6">042</option>
+                    <option value = "7">043</option>
+                    <option value = "8">044</option>
+                    <option value = "9">051</option>
+                    <option value = "10">052</option>
+                    <option value = "11">053</option>
+                    <option value = "12">054</option>
+                    <option value = "13">055</option>
+                    <option value = "14">061</option>
+                    <option value = "15">062</option>
+                    <option value = "16">063</option>
+                    <option value = "17">064</option>
+                    </select><input type = 'tel' name = 'phone1' id="tel"><input type = 'tel' name = 'phone2' id="tel"></td>
+            </tr>
+            <td><strong>휴대전화</strong>
+                <select style="margin-left:33px">
+                <option value = "p1">010</option>
+                <option value = "p2">011</option>
+                </select><input type = 'tel' name = 'phone3' id="tel"><input type = 'tel' name = 'phone4' id="tel"></td>
+            <tr>
+                <td><strong>이메일</strong> <input type = "text" name = "e-mail" style="margin-left:48px" id="email"> @ 
+                    <select>
+                        <option value = "0">선택</option>
+                        <option value = "1">gmail.com</option>
+                        <option value = "2">naver.com</option>
+                        <option value = "3">daum.net</option>
+                        <option value = "4">hanmail.net</option>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>자기소개</strong>
+                     <textarea style="margin-left:31px" cols="50" rows="5" spellcheck="true" placeholder="자유롭게 자기소개를 작성하세요!"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: center;">
+                    <input type="submit" value="가입하기" style="text-align: center;">
+                    <input type="reset" value="재입력" style="text-align: center;">
+            </td>
+            </tr>
+        </table>
+        </style>
+    </form>
+</body>
+</html>

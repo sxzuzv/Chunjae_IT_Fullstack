@@ -1,0 +1,32 @@
+<!-- [JavaScript] 메서드로 노드 선택_CSS 선택자 사용(query 메서드) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[JavaScript] 메서드로 노드 선택_CSS 선택자 사용(query 메서드)</title>
+</head>
+<body>
+    <div class="box-1">
+        <p class="text">text-1</p>
+        <p class="text">text-2</p>
+    </div>
+    <div class="box-2">
+        <p class="text">text-3</p>
+        <p class="text">text-4</p>
+    </div>
+
+    <script>
+        // class 속성값이 box-1인 요소 노드 선택
+        // 특정 class 속성에 해당하는 요소 노드 선택 : .querySelector("class속성명");
+        const el = document.querySelector(".box-1");
+
+        // class 속성값이 box-1인 요소의 하위에 있는 p 태그 선택
+        // 특정 class 속성에 해당 하는 요소 노드의 하위에 있는 태그 선택 : .getElementsByClassName("class속성명")[n(하위n번째)].children;
+        // [n] = [0]일 경우, 하위에 있는 태그 모두를 가지고 온다.
+        const pl = document.getElementsByClassName("box-1")[0].children;
+        console.log(pl);
+    </script>
+</body>
+</html>

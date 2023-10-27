@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict'
+        document.write(`===== 거스름돈 계산 프로그램 =====<br>`);
+        
+        let money = Number(prompt(`얼마로 계산할까요?`, ""))
+        document.write(`입력한 금액은 ${money}원입니다.<br>`);
+        document.write(`<br>`);
+
+        let arr = [5000, 1000, 100, 50, 10];
+        let result = [];
+
+        for(let i = 0; i < arr.length; i++) {
+            result[i] = parseInt(money / arr[i]);
+            money = parseInt(money % arr[i]);
+        }
+
+        document.write(`거스름돈 계산 결과입니다.<br>
+        5000원 : ${result[0]}장<br>
+        1000원 : ${result[1]}장<br>
+        100원 : ${result[2]}개<br>
+        50원 : ${result[3]}개<br>
+        10원 : ${result[4]}개`);
+    </script>
+</body>
+</html>

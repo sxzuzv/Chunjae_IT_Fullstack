@@ -1,0 +1,30 @@
+/* css_grid.html에 적용할 스타일 */
+
+.grid-container{
+    display: grid;
+    grid-template-areas:
+    "header header header"
+    "sidebar content content"
+    "footer footer footer";
+
+}
+p{
+    color: black;
+    background-color: #ff5252;
+}
+#header{
+    grid-area:header;
+    background-color: aquamarine;
+}
+#sidebar{
+    grid-area: sidebar;
+    background-color: blue;
+}
+#content{
+    grid-area: content;
+    background-color: blueviolet
+}
+#footer{
+    grid-area: footer;
+    background-color: cadetblue;
+}

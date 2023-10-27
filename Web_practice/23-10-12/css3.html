@@ -1,0 +1,38 @@
+<!-- position 속성값 중 fixed 활용 -->
+<!-- 초록색 박스가 스크롤을 해도 지정된 위치에 고정된다. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>position 속성 - fixed</title>
+    <style>
+        body{
+            margin: 0px;
+            height: 4000px;
+        }
+        .box{
+            width:100px;
+            height: 100px;
+        }
+        .red-box{
+            background-color: red;
+        }
+        .green-box{
+            background-color: green;
+            position: fixed;
+            left: 100px;
+            top: 100px;
+        }
+        .blue-box{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="box red-box"></div>
+    <div class="box green-box"></div>
+    <div class="box blue-box"></div>
+</body>
+</html>

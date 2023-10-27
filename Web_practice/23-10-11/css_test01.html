@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .parent{
+            font-size:16px;
+        }
+        .child{
+            font-size:2em; /* 부모(16px)의 크기 * 2em = 32px */
+        }
+        .child-to-child{
+            font-size:2em; /* 부모(32px)의 크기 * 2em = 64px */
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">나는 어머니</div>
+    <div class="child">나는 나
+        <div class="child-to-child">나는 손녀</div> /* 태그 안에 넣어주어야 자손의 자손으로 적용 가능 */
+    </div>
+</body>
+</html>
