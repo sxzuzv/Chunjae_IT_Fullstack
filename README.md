@@ -8,8 +8,8 @@
 
 
 ### 📂 레포지토리 구성
-• Java_practice : 자바의 정석 연습 문제를 풀이합니다.
-• TIL : 오늘 학습한 내용을 기록합니다.
+• Java_practice : 자바의 정석 연습 문제를 풀이합니다.<br>
+• TIL : 오늘 학습한 내용을 기록합니다.<br>
 • Web_practice : HTML + CSS + JavaScript 학습 내용을 기록합니다.
 
 
