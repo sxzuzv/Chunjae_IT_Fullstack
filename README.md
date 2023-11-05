@@ -8,9 +8,9 @@
 
 
 ### 📂 레포지토리 구성
-• Java_practice : 자바의 정석 연습 문제를 풀이합니다.<br>
-• TIL : 오늘 학습한 내용을 기록합니다.<br>
-• Web_practice : HTML + CSS + JavaScript 학습 내용을 기록합니다.
+• [Java_practice] (https://github.com/sxzuzv/Chunjae_IT_Fullstack/tree/main/Java_practice) : 자바의 정석 연습 문제를 풀이합니다.<br>
+• [TIL] (https://github.com/sxzuzv/Chunjae_IT_Fullstack/tree/main/TIL) : 오늘 학습한 내용을 기록합니다.<br>
+• [Web_practice] (https://github.com/sxzuzv/Chunjae_IT_Fullstack/tree/main/Web_practice) : HTML + CSS + JavaScript 학습 내용을 기록합니다.
 
 
 
