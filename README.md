@@ -11,4 +11,4 @@
 • [Web_practice](https://github.com/sxzuzv/Chunjae_IT_Fullstack/tree/main/Web_practice) : HTML + CSS + JavaScript 학습 내용을 기록합니다.
 <br><br>
 
-### 📚 학습 교재
+<!-- ### 📚 학습 교재 -->
