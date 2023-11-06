@@ -3,7 +3,7 @@
 <br><br>
 
 ### ⏰ 학습 기간 : 2023-09-19~2024-03-25
-<br><br>
+<br>
 
 ### 📂 레포지토리 구성
 • [Java_practice](https://github.com/sxzuzv/Chunjae_IT_Fullstack/tree/main/Java_practice) : 자바의 정석 연습 문제를 풀이합니다.<br>
