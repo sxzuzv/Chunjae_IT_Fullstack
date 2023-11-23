@@ -1,0 +1,42 @@
+<!-- jQuery 활용 예제 - 버튼 클릭 시, 내용 숨김 및 표시 효과 -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./jquery-3.7.1.min.js"></script>
+    <script>
+      $(function () {
+        // 버튼 클릭 시 실행된다.
+        $('.btn1').on('click', function () {
+          let ts = $(this);
+          // 텍스트가 '숨김'일 경우
+          if (ts.text() == '숨김') {
+            // 슬라이드 내용을 숨긴다. (1초)
+            $('.wrap').slideUp(1000, function () {
+                // 텍스트를 '표시'로 변경한다.
+              $('.btn1').text('표시');
+            });
+          } else { // 텍스트가 '표시'일 경우
+            // 슬라이드 내용을 보여준다. (1초)
+            $('.wrap').slideDown(1000, function () {
+                // 텍스트를 '숨김'으로 변경한다.
+              $('.btn1').text('숨김');
+            });
+          }
+        });
+      });
+    </script>
+    <title>JQ_Test3</title>
+  </head>
+  <body>
+    <p class="btnWrap">
+      <button class="btn1">숨김</button>
+    </p>
+    <div class="wrap">
+      <p class="txt1">내용 1</p>
+      <p class="txt1">내용 2</p>
+    </div>
+  </body>
+</html>
