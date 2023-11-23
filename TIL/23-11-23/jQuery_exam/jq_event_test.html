@@ -1,0 +1,63 @@
+<!-- jQuery 활용 예제 - 이벤트 처리 -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./jquery-3.7.1.min.js"></script>
+    <script>
+        // 글자에 마우스를 올리면 경고창(hello)이 나타난다.
+        //   $(function () {
+        //     $('.btn1 a').mouseover(function () {
+        //       alert('hello');
+        //     });
+        //     $('.btn1 a').focus(function () {
+        //       alert('hello');
+        //     });
+
+        // 글자에 마우스를 올리면 배경색이 노란색으로 변경된다.
+        // $(function () {
+        //     $('.btn1 a').on('mouseover focus', function () {
+        //     let ts = $(this);
+        //     ts.css('background-color', 'yellow');
+        //     });
+        // });
+
+        // 글자 클릭 시, 이벤트 숨김 처리(display: none) 해제
+        // $(function () {
+        //     $('.btn1 a').on('click', function () {
+        //     let ts = $(this);
+        //     ts.parent().next().show();
+        //     return false;
+        //     });
+        // });
+
+        // 글자 클릭 시, 해당되지 않는 나머지 이벤트는 숨김 처리
+        $(function () {
+            $('.btn1 a').on('click', function () {
+            let ts = $(this);
+            $('.btn1').next('ul').filter(':visible').hide();
+            ts.parent().next().show();
+            // 링크 이동 마비
+            return false;
+            });
+        });
+    </script>
+    <title>JQ_Test2</title>
+  </head>
+  <body>
+    <p class="btn1"><a href="#">이벤트 대상1</a></p>
+    <ul style="display: none">
+      <li>리스트 1</li>
+      <li>리스트 1</li>
+      <li>리스트 1</li>
+    </ul>
+    <p class="btn1"><a href="#">이벤트 대상2</a></p>
+    <ul style="display: none">
+      <li>리스트 4</li>
+      <li>리스트 5</li>
+      <li>리스트 6</li>
+    </ul>
+  </body>
+</html>
