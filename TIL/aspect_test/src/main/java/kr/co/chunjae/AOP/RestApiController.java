@@ -28,6 +28,9 @@ public class RestApiController {
 //        System.out.println("post method : " + user);
 //    }
 
+    /**
+     * Log 찍기 예제 : AOP를 사용하는 경우
+     */
     @GetMapping("/get/{id}")
     public String get(@PathVariable Long id,
                       @RequestParam String name) {
