@@ -13,18 +13,33 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/aoptest")
 public class RestApiController {
 
+//    @GetMapping("/get/{id}")
+//    public void get(@PathVariable Long id,
+//                    @RequestParam String name) {
+//        System.out.println("get method");
+//        System.out.println("get method " + id);
+//        System.out.println("get method " + name);
+//    }
+//
+//    // GET method 이외의 method는 웹 상에서 정상 작동되는지 확인이 불가하다.
+//    // 그러므로, POSTMAN을 사용하여 정상 작동이 되는지 파악하도록 한다.
+//    @PostMapping("/post")
+//    public void post(@RequestBody User user) {
+//        System.out.println("post method : " + user);
+//    }
+
     @GetMapping("/get/{id}")
-    public void get(@PathVariable Long id,
-                    @RequestParam String name) {
+    public String get(@PathVariable Long id,
+                      @RequestParam String name) {
         System.out.println("get method");
-        System.out.println("get method " + id);
-        System.out.println("get method " + name);
+        // System.out.println("get method " + id);
+        // System.out.println("get method " + name);
+        return id + " " + name;
     }
 
-    // GET method 이외의 method는 웹 상에서 정상 작동되는지 확인이 불가하다.
-    // 그러므로, POSTMAN을 사용하여 정상 작동이 되는지 파악하도록 한다.
     @PostMapping("/post")
-    public void post(@RequestBody User user) {
+    public User post(@RequestBody User user) {
         System.out.println("post method : " + user);
+        return user;
     }
 }
