@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+
 @Controller
 @Log4j
 public class UploadController {
@@ -22,6 +24,9 @@ public class UploadController {
     // 화면에서 첨부파일을 여러 개 선택할 수 있으므로 배열 타입으로 설정한 후 파일을 업로드한다.
     @PostMapping("/uploadFormAction")
     public void uploadFormPost(MultipartFile[] uploadFile, Model model) {
+        // 업로드 한 파일을 저장할 폴더를 지정한다.
+        String uploadFolder = "C\\upload";
+
         // 여러 개의 파일이 업로드 됐으며, 반복문 수행을 통해 개별 파일에 대한 정보에 접근한다.
         for (MultipartFile multipartFile : uploadFile) {
             log.info("===========================================");
@@ -29,7 +34,16 @@ public class UploadController {
             log.info("Upload File Name : " + multipartFile.getOriginalFilename());
             // 업로드 된 파일의 크기를 출력한다.
             log.info("Upload File Size : " + multipartFile.getSize());
-        }
 
+            // 파라미터로는 java.io.File의 객체를 지정하면 되므로 업로드 되는 원래 파일 이름으로 C 드라이브의 'upload' 폴더에 저장된다.
+            File saveFile = new File(uploadFolder, multipartFile.getOriginalFilename());
+
+            try {
+                // 업로드 된 파일을 저장할 시, MultipartFile의 transferTo(File file) 메서드를 사용한다.
+                multipartFile.transferTo(saveFile);
+            } catch (Exception e) {
+                log.error(e.getMessage());
+            }
+        }
     }
 }
