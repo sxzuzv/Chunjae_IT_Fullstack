@@ -33,7 +33,9 @@ public class RestApiController {
                       @RequestParam String name) {
         System.out.println("get method");
         // System.out.println("get method " + id);
-        // System.out.println("get method " + name);
+        // System.out.println("get method " + name);\
+
+        // @RestController annotation을 사용하였으므로 별도의 view(.jsp) 없이도 웹 상에서 return문을 확인할 수 있다.
         return id + " " + name;
     }
 
