@@ -27,7 +27,7 @@
 			</exclusion>
 		</exclusions>
 	</dependency>
-	ㄴ
+
 	<!-- spring-webmvc 외 test, aop, tx 추가 -->
 	<dependency>
 		<groupId>org.springframework</groupId>
