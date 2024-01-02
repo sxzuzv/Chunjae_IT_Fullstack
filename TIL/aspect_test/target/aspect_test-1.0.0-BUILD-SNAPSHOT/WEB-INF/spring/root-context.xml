@@ -4,8 +4,5 @@
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-
-	<!-- AOP auto proxy -->
-	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 		
 </beans>
