@@ -1,5 +1,6 @@
 package kr.co.chunjae.AOP;
 
+import org.springframework.util.StopWatch;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -42,9 +43,39 @@ public class RestApiController {
         return id + " " + name;
     }
 
+//    @PostMapping("/post")
+//    public User post(@RequestBody User user) {
+//        System.out.println("post method : " + user);
+//        return user;
+//    }
+
+
+    /**
+     * Timer 사용 예제 : AOP를 사용하지 않는 경우
+     */
+
+    // 시간을 측정하는 StopWatch를 메소드마다 만들어주고 실행한다.
+    // 비즈니스 로직과는 전혀 상고나 없는 부가적인 로직이 메소드마다 포함돼 있다.
+    // 이를 해결하기 위해 AOP를 사용한다. (비즈니스 로직과 부가적인 로직을 분리한다.)
     @PostMapping("/post")
-    public User post(@RequestBody User user) {
+    public User post(@RequestBody User user) throws InterruptedException {
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
         System.out.println("post method : " + user);
+        Thread.sleep(1000 * 2);
+        System.out.println("total time : " + stopWatch.getTotalTimeSeconds());
         return user;
+    }
+
+
+    @DeleteMapping("/delete")
+    public void delete() throws InterruptedException {
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+        stopWatch.stop();
+
+        Thread.sleep(1000 * 2);
+        // AOP를 사용하지 않았으므로 출력문을 통해 시간을 확인한다.
+        System.out.println("total time : " + stopWatch.getTotalTimeSeconds());
     }
 }
