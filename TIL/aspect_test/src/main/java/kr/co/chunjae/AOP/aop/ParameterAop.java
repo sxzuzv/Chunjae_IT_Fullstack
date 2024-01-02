@@ -15,7 +15,8 @@ import java.lang.reflect.Method;
 @Component
 public class ParameterAop {
     // @Pointcut : AOP를 적용할 위치를 설정한다.
-    @Pointcut("execution(* com.example.AOP..*.*(..))")
+    // AOP 적용 위치 설정에 유의한다. (패키지 경로를 고려하여 적용 위치를 설정한다.)
+    @Pointcut("execution(* kr.co.chunjae.AOP..*.*(..))")
 
     private void cut() {
 
