@@ -46,4 +46,42 @@ public class UploadController {
             }
         }
     }
+
+
+    @GetMapping("/uploadAjax")
+    public void uploadAjax() {
+        log.info("upload Ajax");
+    }
+
+    @PostMapping("/uploadAjaxAction")
+    public void uploadAjaxPost(MultipartFile[] uploadFile) {
+        // 업로드 한 파일을 저장할 폴더를 지정한다.
+        String uploadFolder = "C:\\upload\\temp";
+
+        // 여러 개의 파일이 업로드 됐으며, 반복문 수행을 통해 개별 파일에 대한 정보에 접근한다.
+        for (MultipartFile multipartFile : uploadFile) {
+            log.info("===========================================");
+            // 업로드 된 파일의 이름을 출력한다.
+            log.info("Upload File Name : " + multipartFile.getOriginalFilename());
+            // 업로드 된 파일의 크기를 출력한다.
+            log.info("Upload File Size : " + multipartFile.getSize());
+
+            // 업로드 된 파일의 기존 이름을 저장한다.
+            String uploadFileName = multipartFile.getOriginalFilename();
+
+            // IE의 경우 전체 파일 경로가 전송되므로, 마지막 '\'를 기준으로 잘라낸 문자열이 실제 파일 이름이 된다.
+            uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\") + 1);
+            log.info("only file name : " + uploadFileName);
+
+            // 파라미터로는 java.io.File의 객체를 지정하면 되므로 업로드 되는 원래 파일 이름으로 C 드라이브의 'upload' 폴더에 저장된다.
+            File saveFile = new File(uploadFolder, multipartFile.getOriginalFilename());
+
+            try {
+                // 업로드 된 파일을 저장할 시, MultipartFile의 transferTo(File file) 메서드를 사용한다.
+                multipartFile.transferTo(saveFile);
+            } catch (Exception e) {
+                log.error(e.getMessage());
+            }
+        }
+    }
 }
