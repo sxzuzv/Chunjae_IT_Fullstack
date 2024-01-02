@@ -28,7 +28,8 @@
 
 		<multipart-config>
 			<!-- 업로드되는 파일을 저장할 공간 -->
-			<location>D:\\upload\\temp</location>
+			<!-- 파일 저장 경로가 존재해야 함에 유의한다. -->
+			<location>C:\\upload\\temp</location>
 			<!-- 업로드되는 파일의 최대 크기 -->
 			<max-file-size>20971520</max-file-size> <!--1MB * 20 -->
 			<!-- 한번에 올릴 수 있는 최대 크기 -->
