@@ -21,6 +21,8 @@ public class RestApiController {
         System.out.println("get method " + name);
     }
 
+    // GET method 이외의 method는 웹 상에서 정상 작동되는지 확인이 불가하다.
+    // 그러므로, POSTMAN을 사용하여 정상 작동이 되는지 파악하도록 한다.
     @PostMapping("/post")
     public void post(@RequestBody User user) {
         System.out.println("post method : " + user);
