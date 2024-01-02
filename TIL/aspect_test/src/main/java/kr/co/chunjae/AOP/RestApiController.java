@@ -1,5 +1,6 @@
 package kr.co.chunjae.AOP;
 
+import kr.co.chunjae.AOP.annotation.Timer;
 import org.springframework.util.StopWatch;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,16 +33,16 @@ public class RestApiController {
     /**
      * Log 찍기 예제 : AOP를 사용하는 경우
      */
-    @GetMapping("/get/{id}")
-    public String get(@PathVariable Long id,
-                      @RequestParam String name) {
-        System.out.println("get method");
-        // System.out.println("get method " + id);
-        // System.out.println("get method " + name);\
-
-        // @RestController annotation을 사용하였으므로 별도의 view(.jsp) 없이도 웹 상에서 return문을 확인할 수 있다.
-        return id + " " + name;
-    }
+//    @GetMapping("/get/{id}")
+//    public String get(@PathVariable Long id,
+//                      @RequestParam String name) {
+//        System.out.println("get method");
+//        // System.out.println("get method " + id);
+//        // System.out.println("get method " + name);\
+//
+//        // @RestController annotation을 사용하였으므로 별도의 view(.jsp) 없이도 웹 상에서 return문을 확인할 수 있다.
+//        return id + " " + name;
+//    }
 
 //    @PostMapping("/post")
 //    public User post(@RequestBody User user) {
@@ -66,16 +67,26 @@ public class RestApiController {
         System.out.println("total time : " + stopWatch.getTotalTimeSeconds());
         return user;
     }
+//
+//
+//    @DeleteMapping("/delete")
+//    public void delete() throws InterruptedException {
+//        StopWatch stopWatch = new StopWatch();
+//        stopWatch.start();
+//        stopWatch.stop();
+//
+//        Thread.sleep(1000 * 2);
+//        // AOP를 사용하지 않았으므로 출력문을 통해 시간을 확인한다.
+//        System.out.println("total time : " + stopWatch.getTotalTimeSeconds());
+//    }
 
-
+    //  @Timer : 메소드의 시간을 측정할 수 있으므로 외부와 통신을 하거나, DataBase를 사용하여 시간이 얼마나 걸렸는지 필요할 경우에 사용한다.
+    // @Timer를 사용하여 측정한 시간을 Database에 저장하거나, 모니터링 하는데 사용할 수 있다.
+    @Timer
     @DeleteMapping("/delete")
     public void delete() throws InterruptedException {
-        StopWatch stopWatch = new StopWatch();
-        stopWatch.start();
-        stopWatch.stop();
-
+        // AOP를 적용하였으므로 별도의 출력문이 필요하지 않다.
         Thread.sleep(1000 * 2);
-        // AOP를 사용하지 않았으므로 출력문을 통해 시간을 확인한다.
-        System.out.println("total time : " + stopWatch.getTotalTimeSeconds());
     }
+
 }

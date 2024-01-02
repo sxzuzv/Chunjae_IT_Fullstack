@@ -1,4 +1,4 @@
-package kr.co.chunjae.AOP;
+package kr.co.chunjae.AOP.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
