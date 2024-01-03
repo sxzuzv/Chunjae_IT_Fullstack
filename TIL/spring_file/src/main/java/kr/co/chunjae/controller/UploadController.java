@@ -1,6 +1,7 @@
 package kr.co.chunjae.controller;
 
 import lombok.extern.log4j.Log4j;
+import net.coobird.thumbnailator.Thumbnailator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +9,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
@@ -98,7 +102,7 @@ public class UploadController {
             uploadFileName = uuid.toString() + "_" + uploadFileName;
 
             // UUID를 적용한 첨부파일을 내용을 지정한 경로에 저장한다.
-            File saveFile = new File(uploadPath, uploadFileName);
+            // File saveFile = new File(uploadPath, uploadFileName);
 
             // 파라미터로는 java.io.File의 객체를 지정하면 되므로 업로드 되는 원래 파일 이름으로 C 드라이브의 'upload' 폴더에 저장된다.
             // File saveFile = new File(uploadFolder, multipartFile.getOriginalFilename());
@@ -107,8 +111,25 @@ public class UploadController {
             // File saveFile = new File(uploadPath, uploadFileName);
 
             try {
+                // 지정 경로에 저장된 파일의 이름을 가져온다.
+                File saveFile = new File(uploadPath, uploadFileName);
+
                 // 업로드 된 파일을 저장할 시, MultipartFile의 transferTo(File file) 메서드를 사용한다.
                 multipartFile.transferTo(saveFile);
+
+                // 섬네일 이미지 생성
+                // 일반 파일과 이미지 파일을 구분하여 이미지 파일일 시, 섬네일을 생성하도록 한다.
+
+                // 업로드 된 파일이 이미지 파일인지 판단한다.
+                if (checkImageType(saveFile)) { // 업로드 된 파일이 이미지 파일인 경우
+                    // 기존 파일 이름 앞에 's_'를 붙여 섬네일 이름을 설정한다.
+                    FileOutputStream thumbnail = new FileOutputStream(new File(uploadPath, "s_" + uploadFileName));
+
+                    // 섬네일 파일 크기는 100x100으로 지정한다.
+                    Thumbnailator.createThumbnail(multipartFile.getInputStream(), thumbnail, 100, 100);
+
+                    thumbnail.close();
+                }
             } catch (Exception e) {
                 log.error(e.getMessage());
             }
@@ -127,5 +148,17 @@ public class UploadController {
 
         // "-"를 기준으로 파일명을 분할한다.
         return str.replace("-", File.separator);
+    }
+
+    // 특정한 파일이 이미지 타입인지 검사하는 메서드 checkImageType()
+    private boolean checkImageType(File file) {
+        try {
+           String contentType = Files.probeContentType(file.toPath());
+           return contentType.startsWith("image");
+        } catch (IOException e) {
+           // TODO Auto-generated catch block
+           e.printStackTrace();
+        }
+        return false;
     }
 }
