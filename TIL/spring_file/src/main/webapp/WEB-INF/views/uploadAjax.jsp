@@ -115,8 +115,9 @@
 
       /* add filedate to formaata */
       for(let i = 0; i< files.length; i++){
+        // 파일 업로드 관련 유효성 검사 진행 : 파일 사이즈 및 업로드 가능 확장자를 판단한다.
         if(!checkExtension(files[i].name, files[i].sign)){
-          return flase;
+          return false;
         }
 
         formDate.append("uploadFile", files[i]);
