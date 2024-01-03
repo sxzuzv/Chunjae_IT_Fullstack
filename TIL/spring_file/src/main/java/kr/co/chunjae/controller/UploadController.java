@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 
 @Controller
 @Log4j
@@ -85,11 +86,25 @@ public class UploadController {
             uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\") + 1);
             log.info("only file name : " + uploadFileName);
 
+            // 중복 방지를 위한 UUID 적용
+            // 파일 이름 생성 시, 동일한 이름으로 업로드되면 기존 파일을 지우게 된다.
+            // 이를 java.util.UUID의 값을 이용하여 처리한다.
+
+            // randomUUID()를 이용하여 임의의 값을 생성한다.
+            UUID uuid = UUID.randomUUID();
+
+            // 생성된 값은 원래의 파일 이름과 구분할 수 있도록 중간에 '_'를 추가한다.
+            // 앞에서부터 '_'를 기준으로 분리하면 원래의 파일 이름을 파악할 수 있게 된다.
+            uploadFileName = uuid.toString() + "_" + uploadFileName;
+
+            // UUID를 적용한 첨부파일을 내용을 지정한 경로에 저장한다.
+            File saveFile = new File(uploadPath, uploadFileName);
+
             // 파라미터로는 java.io.File의 객체를 지정하면 되므로 업로드 되는 원래 파일 이름으로 C 드라이브의 'upload' 폴더에 저장된다.
             // File saveFile = new File(uploadFolder, multipartFile.getOriginalFilename());
 
             // 지정한 경로에 업로드 파일을 저장한다.
-            File saveFile = new File(uploadPath, uploadFileName);
+            // File saveFile = new File(uploadPath, uploadFileName);
 
             try {
                 // 업로드 된 파일을 저장할 시, MultipartFile의 transferTo(File file) 메서드를 사용한다.
