@@ -27,7 +27,7 @@ public class UploadController {
     @PostMapping("/uploadFormAction")
     public void uploadFormPost(MultipartFile[] uploadFile, Model model) {
         // 업로드 한 파일을 저장할 폴더를 지정한다.
-        String uploadFolder = "C:\\upload\\temp";
+        String uploadFolder = "C:\\upload";
 
         // 여러 개의 파일이 업로드 됐으며, 반복문 수행을 통해 개별 파일에 대한 정보에 접근한다.
         for (MultipartFile multipartFile : uploadFile) {
@@ -58,7 +58,7 @@ public class UploadController {
     @PostMapping("/uploadAjaxAction")
     public void uploadAjaxPost(MultipartFile[] uploadFile) {
         // 업로드 파일을 저장할 폴더의 경로를 지정한다.
-        String uploadFolder = "C:\\upload\\temp";
+        String uploadFolder = "C:\\upload";
 
         // 지정한 경로에 폴더를 생성한다. (폴더 생성 구성 : yyyy 하위 - mm 하위 - dd)
         File uploadPath = new File(uploadFolder, getFolder());
