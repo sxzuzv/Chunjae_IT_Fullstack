@@ -1,11 +1,16 @@
 package kr.co.chunjae.controller;
 
+import kr.co.chunjae.domain.AttachFileDTO;
 import lombok.extern.log4j.Log4j;
 import net.coobird.thumbnailator.Thumbnailator;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -13,7 +18,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Controller
@@ -60,10 +67,16 @@ public class UploadController {
         log.info("upload Ajax");
     }
 
-    @PostMapping("/uploadAjaxAction")
-    public void uploadAjaxPost(MultipartFile[] uploadFile) {
+
+    // UploadController를 AttachFileDTO의 리스트를 반환하는 구조로 변경한다.
+    @PostMapping(value="/uploadAjaxAction", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public ResponseEntity<List<AttachFileDTO>> uploadAjaxPost(MultipartFile[] uploadFile) {
+        List<AttachFileDTO> list = new ArrayList<>();
+
         // 업로드 파일을 저장할 폴더의 경로를 지정한다.
         String uploadFolder = "C:\\upload";
+        String uploadFolderPath = getFolder();
 
         // 지정한 경로에 폴더를 생성한다. (폴더 생성 구성 : yyyy 하위 - mm 하위 - dd)
         File uploadPath = new File(uploadFolder, getFolder());
@@ -77,6 +90,9 @@ public class UploadController {
 
         // 여러 개의 파일이 업로드 됐으며, 반복문 수행을 통해 개별 파일에 대한 정보에 접근한다.
         for (MultipartFile multipartFile : uploadFile) {
+            // AttachFileDTO의 인스턴스를 생성한다.
+            AttachFileDTO attachFileDTO = new AttachFileDTO();
+
             log.info("===========================================");
             // 업로드 된 파일의 이름을 출력한다.
             log.info("Upload File Name : " + multipartFile.getOriginalFilename());
@@ -89,6 +105,9 @@ public class UploadController {
             // IE의 경우 전체 파일 경로가 전송되므로, 마지막 '\'를 기준으로 잘라낸 문자열이 실제 파일 이름이 된다.
             uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\") + 1);
             log.info("only file name : " + uploadFileName);
+
+            // AttachFileDTO 인스턴스에 파일 이름을 저장한다.
+            attachFileDTO.setFileName(uploadFileName);
 
             // 중복 방지를 위한 UUID 적용
             // 파일 이름 생성 시, 동일한 이름으로 업로드되면 기존 파일을 지우게 된다.
@@ -117,6 +136,11 @@ public class UploadController {
                 // 업로드 된 파일을 저장할 시, MultipartFile의 transferTo(File file) 메서드를 사용한다.
                 multipartFile.transferTo(saveFile);
 
+                // AttachFileDTO 인스턴스에 UUID 값을 저장한다.
+                attachFileDTO.setUuid(uuid.toString());
+                // AttachFileDTO 인스턴스에 업로드 경로를 저장한다.
+                attachFileDTO.setUploadPath(uploadFolderPath);
+
                 // 섬네일 이미지 생성
                 // 일반 파일과 이미지 파일을 구분하여 이미지 파일일 시, 섬네일을 생성하도록 한다.
 
@@ -130,10 +154,15 @@ public class UploadController {
 
                     thumbnail.close();
                 }
+
+                // 리스트에 AttachFileDTO 인스턴스를 저장한다.
+                list.add(attachFileDTO);
             } catch (Exception e) {
-                log.error(e.getMessage());
+                e.printStackTrace();
             }
         }
+        // JSON 형태의 데이터를 반환한다.
+        return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
     // 첨부파일을 보관하는 폴더를 생성한다. (폴더 생성 구성 : yyyy 하위 - mm 하위 - dd)

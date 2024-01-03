@@ -124,6 +124,7 @@
       }
 
       $.ajax({
+        // 업로드된 파일에 대한 결과 데이터를 JavaScript를 이용하여 처리하도록 한다.
         url: '/uploadAjaxAction',
         processData: false,
         contentType: false,
@@ -131,12 +132,12 @@
         type: 'POST',
         dataType: 'json',
         success: function (result){
-          alert("Uploaded");
+          // alert("Uploaded");
           console.log(result);
 
-          showUploadedFile(result);
+          // showUploadedFile(result);
 
-          $(".uploadDiv").html(cloneObj.html());
+          // $(".uploadDiv").html(cloneObj.html());
         }
       }); //$.ajax
 
