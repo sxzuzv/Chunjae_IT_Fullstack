@@ -102,6 +102,11 @@
       return true;
     }
 
+    // 브라우저에서의 섬네일 처리
+    // <input type='file'>은 다른 DOM 요소들과 달리 readonly이므로, 안쪽의 내용을 수정할 수 없다.
+    // 그러므로 별도의 방법으로 초기화하여 또 다른 첨부파일을 추가할 수 있도록 만들어야 한다.
+
+    // 첨부파일 업로드 전, 아무 내용이 없는 <input type='file'> 객체가 포함된 <div>를 복사(clone)한다.
     var cloneObj  = $(".uploadDiv").clone();
 
     $("#uploadBtn").on("click", function (e){
@@ -137,7 +142,8 @@
 
           // showUploadedFile(result);
 
-          // $(".uploadDiv").html(cloneObj.html());
+          // 첨부파일 업로드 후, 복사된 객체를 <div> 내에 다시 추가하여 첨부파일 부분을 초기화시킨다.
+          $(".uploadDiv").html(cloneObj.html());
         }
       }); //$.ajax
 
