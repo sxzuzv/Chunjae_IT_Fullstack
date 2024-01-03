@@ -83,8 +83,10 @@
 <%-- processData와 contentType은 반드시 'false'로 지정해야 전송된다. --%>
 <script>
   $(document).ready(function (){
-    var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
-    var maxSize = 5242880; //5MB
+    // 업로드 가능 파일(확장자) 제한
+    let regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
+    // 파일 최대 용량 제한 (5MB)
+    let maxSize = 5242880;
 
     function checkExtension(fileName, fileSize) {
 
