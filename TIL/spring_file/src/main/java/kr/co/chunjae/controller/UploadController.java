@@ -148,6 +148,8 @@ public class UploadController {
 
                 // 업로드 된 파일이 이미지 파일인지 판단한다.
                 if (checkImageType(saveFile)) { // 업로드 된 파일이 이미지 파일인 경우
+                    attachFileDTO.setImage(true);
+
                     // 기존 파일 이름 앞에 's_'를 붙여 섬네일 이름을 설정한다.
                     FileOutputStream thumbnail = new FileOutputStream(new File(uploadPath, "s_" + uploadFileName));
 
