@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Controller
 @Log4j
@@ -55,8 +57,18 @@ public class UploadController {
 
     @PostMapping("/uploadAjaxAction")
     public void uploadAjaxPost(MultipartFile[] uploadFile) {
-        // 업로드 한 파일을 저장할 폴더를 지정한다.
+        // 업로드 파일을 저장할 폴더의 경로를 지정한다.
         String uploadFolder = "C:\\upload\\temp";
+
+        // 지정한 경로에 폴더를 생성한다. (폴더 생성 구성 : yyyy 하위 - mm 하위 - dd)
+        File uploadPath = new File(uploadFolder, getFolder());
+        log.info("upload path : " + uploadPath);
+
+        // 폴더가 생성되지 않았을 경우
+        if (uploadPath.exists() == false) {
+            // 해당 경로에 폴더를 생성한다.
+            uploadPath.mkdirs();
+        } // make yyyy/MM/dd folder
 
         // 여러 개의 파일이 업로드 됐으며, 반복문 수행을 통해 개별 파일에 대한 정보에 접근한다.
         for (MultipartFile multipartFile : uploadFile) {
@@ -74,7 +86,10 @@ public class UploadController {
             log.info("only file name : " + uploadFileName);
 
             // 파라미터로는 java.io.File의 객체를 지정하면 되므로 업로드 되는 원래 파일 이름으로 C 드라이브의 'upload' 폴더에 저장된다.
-            File saveFile = new File(uploadFolder, multipartFile.getOriginalFilename());
+            // File saveFile = new File(uploadFolder, multipartFile.getOriginalFilename());
+
+            // 지정한 경로에 업로드 파일을 저장한다.
+            File saveFile = new File(uploadPath, uploadFileName);
 
             try {
                 // 업로드 된 파일을 저장할 시, MultipartFile의 transferTo(File file) 메서드를 사용한다.
@@ -83,5 +98,19 @@ public class UploadController {
                 log.error(e.getMessage());
             }
         }
+    }
+
+    // 첨부파일을 보관하는 폴더를 생성한다. (폴더 생성 구성 : yyyy 하위 - mm 하위 - dd)
+    // 한 번에 폴더를 생성하거나 존재하는 폴더를 이용하는 방식 중 하나를 선택할 수 있다.
+    // java.io.File에 존재하는 mkdirs()를 이용하여 필요한 상위 폴더까지 한 번에 생성할 수 있다.
+    private String getFolder() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+        Date date = new Date();
+
+        String str = sdf.format(date);
+
+        // "-"를 기준으로 파일명을 분할한다.
+        return str.replace("-", File.separator);
     }
 }
