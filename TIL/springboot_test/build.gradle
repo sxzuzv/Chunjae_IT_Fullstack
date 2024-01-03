@@ -1,6 +1,7 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '3.2.1'
+    // mvn repository 참고 후 springboot version 변경
+    id 'org.springframework.boot' version '2.7.18'
     id 'io.spring.dependency-management' version '1.1.4'
 }
 
@@ -8,7 +9,8 @@ group = 'kr.co.chunjae'
 version = '0.0.1-SNAPSHOT'
 
 java {
-    sourceCompatibility = '17'
+    // java version 변경
+    sourceCompatibility = '11'
 }
 
 repositories {
