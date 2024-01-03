@@ -3,11 +3,13 @@ package kr.co.chunjae.controller;
 import kr.co.chunjae.domain.AttachFileDTO;
 import lombok.extern.log4j.Log4j;
 import net.coobird.thumbnailator.Thumbnailator;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -70,7 +72,7 @@ public class UploadController {
 
     // UploadController를 AttachFileDTO의 리스트를 반환하는 구조로 변경한다.
     @PostMapping(value="/uploadAjaxAction", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
+    @ResponseBody // 웹 상에서 결과를 출력하겠다는 의미이다.
     public ResponseEntity<List<AttachFileDTO>> uploadAjaxPost(MultipartFile[] uploadFile) {
         List<AttachFileDTO> list = new ArrayList<>();
 
@@ -189,5 +191,38 @@ public class UploadController {
            e.printStackTrace();
         }
         return false;
+    }
+
+    // 섬네일 이미지 출력
+    // 일반 파일의 경우 단순히 파일 이미지만을 보여주지만, 이미지 파일의 경우 섬네일 파일을 보여주어야 한다.
+    // 섬네일은 서버를 통해서 특정 URI를 호출하면 보여줄 수 있도록 처리한다.
+    // 이때, 해당 파일의 경로와 UUID가 붙은 파일의 이름이 필요하다. ('파일 경로 + s_ + uuid가 붙은 파일 이름')
+    // 서버에서 섬네일은 GET 방식을 통해서 가져올 수 있도록 처리한다.
+
+    // 특정 파일 이름을 받아 이미지 데이터를 전송하는 메소드 getFile()
+    @GetMapping("/display")
+    @ResponseBody
+    public ResponseEntity<byte[]> getFile(String fileName) { // 문자열로 파일의 경로가 포함된 fileName을 파라미터로 받고 byte[]를 전송(반환)한다.
+        log.info("fileName : " + fileName);
+
+        File file = new File("C:\\upload\\" + fileName);
+
+        log.info("file: " + file);
+
+        ResponseEntity<byte[]> result = null;
+
+        try {
+            // byte[]로 이미지 파일 데이터 전송 시 주의사항
+            // 브라우저에서 보내주는 MIME 타입이 파일의 종류에 따라 달라지므로 probeContentType()을 이용하여 적절한 MIME 타입 데이터를 Http의 헤더 메시지에 포함할 수 있도록 처리한다.
+            HttpHeaders headers = new HttpHeaders();
+
+            headers.add("Content-Type", Files.probeContentType(file.toPath()));
+
+            result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), headers, HttpStatus.OK);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return result;
     }
 }

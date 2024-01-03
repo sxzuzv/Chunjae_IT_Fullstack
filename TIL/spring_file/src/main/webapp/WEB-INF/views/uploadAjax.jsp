@@ -155,19 +155,24 @@
     function showUploadedFile(uploadResultArr){
         var str = "";
 
-      $(uploadResultArr).each(function(i, obj){
+      $(uploadResultArr).each(function(i, obj) {
         // 업로드 된 파일 이름을 출력한다.
-        str += "<li>" + obj.fileName + "</li>";
+        // str += "<li>" + obj.fileName + "</li>";
 
-        // if(!obj.image){
-        //   let fileCallPath  = encodeURIComponent(obj.uploadPath + "/" + obj.uuid + "_" + obj.fileName);
-        //   //str += "<li><img src='/resources/img/attach.png'>"+obj.fileName+"</li>";
-        //   str += "<li><a href='/download?fileName="+fileCallPath+"'>"+"<img src='/resources/img/attach.png'>"+obj.fileName+"</a></li>"
-        // }else{
-        //
-        //   let fileCallPath =  encodeURIComponent( obj.uploadPath+ "/s_"+obj.uuid+"_"+obj.fileName);
-        //   str += "<li><img src='/display?fileName="+fileCallPath+"'><li>";
-        // }
+        // 업로드 된 파일이 이미지 파일이 아닐 경우
+        if (!obj.image) {
+          // attach.png와 파일 이름을 출력한다.
+          str += "<li><img src='/resources/img/attach.png'>" + obj.fileName + "</li>";
+        } else { // 업로드 된 파일이 이미지 파일일 경우
+          // 파일 이름만 출력한다.
+          // str += "<li>" + obj.fileName + "</li>";
+
+          // JavaScript 처리
+          // 브라우저에서 GET 방식으로 첨부파일의 이름을 사용할 때에는 파일 이름에 포함된 공백 문자나 한글 이름 등에 주의한다.
+          // 이를 수정하기 위하여 encodeURIComponent()를 이용하여 URI 호출에 적합한 문자열로 인코딩 처리한다.
+          let fileCallPath = encodeURIComponent(obj.uploadPath + "/s_" + obj.uuid + "_" + obj.fileName);
+          str += "<li><img src='/display?fileName=" + fileCallPath + "'><li>";
+        }
       });
       uploadResult.append(str);
     }
