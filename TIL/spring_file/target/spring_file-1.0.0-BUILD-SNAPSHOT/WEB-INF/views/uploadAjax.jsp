@@ -140,7 +140,7 @@
           // alert("Uploaded");
           console.log(result);
 
-          // showUploadedFile(result);
+          showUploadedFile(result);
 
           // 첨부파일 업로드 후, 복사된 객체를 <div> 내에 다시 추가하여 첨부파일 부분을 초기화시킨다.
           $(".uploadDiv").html(cloneObj.html());
@@ -149,24 +149,25 @@
 
     });
 
-
     let uploadResult = $(".uploadResult ul");
 
+    // showUploadedFile() : JSON 데이터를 받아 해당 파일의 이름을 추가한다.
     function showUploadedFile(uploadResultArr){
-
       var str = "";
 
       $(uploadResultArr).each(function(i, obj){
+        // 업로드 된 파일 이름을 한 줄씩 출력한다.
+        str += "<li>" + obj.fileName + "</li>";
 
-        if(!obj.image){
-          let fileCallPath  = encodeURIComponent(obj.uploadPath + "/" + obj.uuid + "_" + obj.fileName);
-          //str += "<li><img src='/resources/img/attach.png'>"+obj.fileName+"</li>";
-          str += "<li><a href='/download?fileName="+fileCallPath+"'>"+"<img src='/resources/img/attach.png'>"+obj.fileName+"</a></li>"
-        }else{
-
-          let fileCallPath =  encodeURIComponent( obj.uploadPath+ "/s_"+obj.uuid+"_"+obj.fileName);
-          str += "<li><img src='/display?fileName="+fileCallPath+"'><li>";
-        }
+        // if(!obj.image){
+        //   let fileCallPath  = encodeURIComponent(obj.uploadPath + "/" + obj.uuid + "_" + obj.fileName);
+        //   //str += "<li><img src='/resources/img/attach.png'>"+obj.fileName+"</li>";
+        //   str += "<li><a href='/download?fileName="+fileCallPath+"'>"+"<img src='/resources/img/attach.png'>"+obj.fileName+"</a></li>"
+        // }else{
+        //
+        //   let fileCallPath =  encodeURIComponent( obj.uploadPath+ "/s_"+obj.uuid+"_"+obj.fileName);
+        //   str += "<li><img src='/display?fileName="+fileCallPath+"'><li>";
+        // }
       });
       uploadResult.append(str);
     }
