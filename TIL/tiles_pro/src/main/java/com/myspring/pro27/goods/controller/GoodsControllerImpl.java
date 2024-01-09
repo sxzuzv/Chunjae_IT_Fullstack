@@ -1,4 +1,4 @@
-package com.myspring.pro27.controller;
+package com.myspring.pro27.goods.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,9 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
-public class boardController {
-    @RequestMapping(value = "/board.do", method = RequestMethod.GET)
-    public ModelAndView board(HttpServletRequest request, HttpServletResponse response) throws Exception {
+public class GoodsControllerImpl implements GoodsController {
+    // tiles_goods.xml에 정의된 name(/goods)과 value을 맞추어야 JSP 출력이 가능하다.
+    @RequestMapping(value = "/goods", method = RequestMethod.GET)
+    public ModelAndView goods(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String viewName = getViewName(request);
         ModelAndView mav = new ModelAndView(viewName);
         return mav;

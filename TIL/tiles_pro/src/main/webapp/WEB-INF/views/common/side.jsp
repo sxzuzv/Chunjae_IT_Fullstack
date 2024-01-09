@@ -23,8 +23,8 @@
 	<h1>사이드 메뉴</h1>
 	<h1>
 		<a href="/member/listMembers.do"  class="no-underline">회원 관리</a><br>
-	    <a href="/board.do"  class="no-underline">게시판 관리</a><br>
-	    <a href="/goods.do"  class="no-underline">상품 관리</a><br>
+	    <a href="/board"  class="no-underline">게시판 관리</a><br>
+	    <a href="/goods"  class="no-underline">상품 관리</a><br>
     </h1>
 </body>
 </html>
