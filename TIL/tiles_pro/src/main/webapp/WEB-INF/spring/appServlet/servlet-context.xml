@@ -32,18 +32,18 @@
 
 	<!-- tiles 관련 bean 설정 -->
 	<!-- 스프링의 TilesConfigurer 클래스 빈을 생성하면서 URL 요청에 대해 브라우저에 나타낼 정보가 저장된 타일즈 설정 파일을 tiles 패키지에서 읽어 들인다. -->
-	 <beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+	 <beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
 			<beans:property name="definitions">
 				<beans:list>
 					<beans:value>classpath:tiles/*.xml</beans:value>
 				</beans:list>
 			</beans:property>
 			<beans:property name="preparerFactoryClass"
-						  value="org.springframework.web.servlet.view.tiles3.SpringBeanPreparerFactory" />
+						  value="org.springframework.web.servlet.view.tiles2.SpringBeanPreparerFactory" />
 		</beans:bean>
 		<beans:bean id="viewResolver"
 			class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-			<beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
+			<beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView" />
 		</beans:bean>
 
 
