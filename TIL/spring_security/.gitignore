@@ -35,3 +35,8 @@ out/
 
 ### VS Code ###
 .vscode/
+/target/classes/kr/co/chunjae/domain/AuthVO.class
+/target/classes/kr/co/chunjae/mapper/MemberMapper.class
+/target/classes/kr/co/chunjae/mapper/MemberMapper.xml
+/target/test-classes/kr/co/chunjae/mapper/MemberMapperTests.class
+/target/classes/kr/co/chunjae/domain/MemberVO.class
