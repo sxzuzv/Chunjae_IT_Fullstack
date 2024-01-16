@@ -6,3 +6,5 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+
+/TIL/springboot_exam/out/production/classes/kr/co/chunjae/springboot_exam/domain/Member.class
