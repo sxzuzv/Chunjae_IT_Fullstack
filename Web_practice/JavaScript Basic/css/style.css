@@ -1,0 +1,29 @@
+html, body {color: #676767;font: 12px/15px "돋움",Dotum,Tahoma,Arial;}  
+div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {margin: 0;padding: 0;}
+img {border:none;}
+ol, ul, li {list-style: none;}
+a{text-decoration:none;}
+.displayno {display:none;}
+/* feature */
+.feature-banner {width:105%;margin-left:-20px;padding-bottom:10px;}
+.feature-banner>li {float:left;overflow:hidden;margin:0 0 18px 20px;border:1px solid #dedede;background:#fff;}
+.feature-banner__items {width:298px;height:238px;}
+.feature-banner__first {position:relative;z-index:1;width:298px;height:495px;position:relative;}
+.feature-banner__last {position:relative;z-index:1;width:618px;height:238px;position:relative;}
+.feature-banner__group>li {display:none;}
+.feature-banner__group>li.on {display:block;}
+.feature-banner__group>li>a {display:block;}
+.feature-banner__selector {position:absolute;bottom:5px;width:100%;padding:0;}
+.feature-banner__items>a, .feature-banner__first>a, .feature-banner__last>a {display:block;}
+
+/* 전 콤포넌트 - 인디케이터 */
+.tmp-nav {height:23px;padding-top:8px;text-align:center;z-index:10}
+.tmp-nav a {display:inline-block;overflow:hidden;padding:3px;margin:0 2px;}
+.tmp-nav a span {display:block;overflow:hidden;width:10px;height:10px;border-radius:15px;background:#eeeeee;font:0/200% m;vertical-align:top;*display:inline;*zoom:1}
+.tmp-nav a.on span {background:#c2d40e}
+.tmp-nav.green a.on span {background-color:#00a4b4}
+
+/* 201601 tmp-nav 이미지사용 신규 클래스 */
+.tmp-nav.img-dotted>a {padding:0;}
+.tmp-nav.img-dotted>a>span {width:18px;height:18px;background:url('../images/k_dotted_nav.png') no-repeat;border-radius:0;}
+.tmp-nav.img-dotted>a.on>span {background-position:-18px 0;}
