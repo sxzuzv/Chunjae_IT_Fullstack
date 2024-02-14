@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>function</title>
+    <!-- 아래와 같은 형태로 함수 작성 시, 자유롭게 재사용이 가능하다. -->
+    <script type="text/javascript">
+        function add1 (num1 , num2) {
+            return num1 + num2;
+        }
+        const result = add1(10, 20);
+        console.log("result : " + result);
+
+        // const를 사용하여 재사용이 불가하도록 막는다.
+        const add2 = function(num1, num2) {
+            return num1 + num2;
+        }
+
+        // Arrow Functions
+        const result2 = add2(20, 30);
+        console.log("result2 : " + result2);
+
+        const add3 = (num1, num2) => {
+            return num1 + num2;
+        }
+        const result3 = add3(50, 60);
+        console.log("result3 : " + result3);
+        
+</script>
+</head>
+<body>
+</body>
+</html>
