@@ -1,0 +1,19 @@
+<!-- DOM Event : HTML Event Attributes -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>event</title>
+    <script type="text/javascript">
+        // 이벤트 함수를 정의한다.
+        function eventClick() {
+            console.log("click!");
+        }
+    </script>
+</head>
+<!-- 이벤트를 태그 내에 직접 삽입한다. -->
+<body>
+    <!-- <button onclick="javascript:console.log('click!');">CLICK!</button> -->
+    <!-- 이벤트 발생 시, 정의한 함수를 실행할 수 있도록 한다. -->
+    <button onclick="javascript:eventClick()">CLICK!</button>
+</body>
+</html>
