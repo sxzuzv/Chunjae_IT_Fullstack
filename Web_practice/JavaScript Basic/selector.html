@@ -1,0 +1,38 @@
+<!-- DOM Selector -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>selector</title>
+    <script type="text/javascript">
+        function eventClick() {
+            // console.log(document.getElementById("box"));
+
+            // <div> 태그의 내용을 blank에서 Hello!로 수정한다.
+            document.getElementById("box").innerHTML="Hello!";
+            // console.log(document.getElementById("box"));
+
+            const list = document.getElementById("list");
+            // <ul> 태그의 자식 태그에 접근한다.
+            const liList = list.getElementsByTagName("li");
+
+            // <li> 태그의 내용을 for문을 활용하여 수정한다.
+            // list.getElementsByTagName("li"); 실행 시, <li> 태그의 길이가 함께 출력된다.
+            // 해당 길이를 활용하여 반복할 횟수를 지정할 수 있다.
+            for (let index = 0; index < liList.length; index++) {
+                liList[index].innerText = "click" + (index + 1);
+            } 
+        }
+    </script>
+</head>
+<body>
+    <button onclick="javascript:eventClick()">CLICK!</button>
+    <div id="box">blank</div>
+    <!-- <li> 태그의 개수가 불확실하므로, id 속성을 사용하는 것은 적절하지 않다. -->
+    <!-- 이때는, <ul> 태그에 고유한 id를 부여하고, 해당 태그 하위에 위치한 <li> 태그를 찾는 방식을 택한다. -->
+    <ul id="list">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+</body>
+</html>
