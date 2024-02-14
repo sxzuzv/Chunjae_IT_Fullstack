@@ -1,0 +1,19 @@
+<!-- JavaScript 실행 순서는?
+    1) <head> 태그 내부
+    2) <body> 태그 내부
+    3) <html> 태그 외부 -->
+<html>
+    <head>
+        <script type="text/javascript">
+            console.log('head');
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            console.log('body');
+        </script>
+    </body>
+</html>
+<script type="text/javascript">
+    console.log('load');
+</script>
