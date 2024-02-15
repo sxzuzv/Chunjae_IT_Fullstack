@@ -6,7 +6,53 @@
   <link href="css/addressList.css" type="text/css" rel="stylesheet" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
   <script type="text/javascript">
-	 
+	 const init = function() {
+		/* 아래와 같은 형식의 데이터를 만든다.
+		<tr>
+			<td>홍길동</td>
+			<td>010-1111-2222</td>
+			<td>
+				<a href="#"><img src="images/btn_del.gif" alt="삭제" /></a>
+			</td>
+		</tr>
+		*/
+		$("#addBtn").on(
+			"click", function(e) {
+				e.preventDefault();	// 이중 클릭 방지
+
+				// <tr> 태그를 만든다. (이때, <tr> 태그와 <td> 태그를 <tbody> 하위에 붙이는 명령이 있어야 한다.)
+				const tr = document.createElement("tr");
+				$(tr).append("<td>홍길동</td>");
+				$(tr).append("<td>010-2222-3333</td>");
+
+				// console.log($(tr).append("<td>HI</td>"));		// <tr> 기준으로 붙인다.
+				// console.log($("<td>HI</td>").appendTo(tr));		// <td> 기준으로 붙인다. (뒤집어서 붙이는 개념, 자식 기준 부모 붙이기)
+
+				const td = $("<td></td>").appendTo(tr);				// <td> 태그 기준으로 <tr> 태그를 붙인다.
+
+				const aTagText = "<a href=\"#\"><img src=\"images/btn_del.gif\" alt=\"삭제\" /></a>";
+ 
+				const aTag = $(aTagText).appendTo(td);				// <a> 태그 기준으로 <td> 태그를 붙인다.
+
+				// 삭제 버튼 클릭 시, 이벤트가 발생된다.
+				$(aTag).on(
+					"click", function() {
+						// 자신을 기준으로 부모 <tr> 태그를 삭제한다.
+						$(this).parent().parent().remove();
+					}
+				)
+
+				// <tbody> 태그 하위에 생성한 태그들을 붙여준다.
+				$("#addressList tbody").append(tr);
+
+
+				// 역슬래시 삽입 시, 문자열로 인식한다.
+				// $(tr).append("<td><a href=\"#\"><img src=\"images/btn_del.gif\" alt=\"삭제\" /></a></td>");
+			}
+		);
+	 }
+
+	 window.onload = init;
   </script>
  </head>
  <body>
@@ -17,7 +63,7 @@
 	<input type="text" id="userPhone" size="20" maxlength="11" name="userPhone"/>
 	<a href="#" id="addBtn"><img src="images/btn_add.gif" alt="추가"/></a>		
 </form>
-<table id="adressList">
+<table id="addressList">
 	<caption>전화번호부</caption>
 	<colgroup>
 		<col width="40%" />
@@ -35,15 +81,6 @@
 		<tr>
 			<td colspan="3">등록 된 내용이 없습니다.</td>
 		</tr>
-		<!--
-		<tr>
-			<td>양영보</td>
-			<td>010-1111-2222</td>
-			<td>
-				<a href="#"><img src="images/btn_del.gif" alt="삭제" /></a>
-			</td>
-		</tr>
-		-->
 	</tbody>
 </table>
  </body>
