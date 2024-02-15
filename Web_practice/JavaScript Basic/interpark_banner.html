@@ -2,15 +2,50 @@
 <html lang="en">
  <head>
   <meta charset="UTF-8">
-  <title> new document </title>
+  <title> interpark_banner </title>
   <link href="css/interparkstyle.css" type="text/css" rel="stylesheet" />
   <script type="text/javascript">
 	  const init = function() {
+        // >(우측 버튼) 클릭 시, 배너 메뉴가 차례로 나타난다.
+        document.getElementById("nextBtn").onclick = function() {
+            // .getElementsByClassName = 결과는 array 형태
+            // .getElementByClassName = 결과는 단일 객체 형태
+            const activeList = pagingList.getElementsByClassName("active");
+            let num = activeList[0].num + 1;
+
+            console.log(num);
+            // 다음 버튼을 누를 때, <a> 태그의 라디오도 함께 넘어가게 해준다.
+            // 이때, num은 1, 2, 3, 4로 구성돼 있으므로 index의 값(0, 1, 2, 3)과 맞지 않는다.
+            if (num >= aTagList.length) {
+                // aTagList 배열의 길이보다 num의 값이 클 경우, num 값을 0으로 설정한다.
+                num = 0;
+            }
+            // 이벤트 함수를 실행한다. (괄호를 붙였으므로, 실행을 의미한다.)
+            aTagList[num].onmouseenter();
+        };
+
+        // <(좌측 버튼) 클릭 시, 배너 메뉴가 차례로 나타난다.
+        document.getElementById("prevBtn").onclick = function() {
+            const activeList = pagingList.getElementsByClassName("active");
+            let num = activeList[0].num - 1;
+
+            if (num < 0) {
+                // 좌측으로 모두 넘어갔을 시(num 값이 0보다 작을 때) num 값을 3으로 지정한다.
+                num = aTagList.length - 1;
+            }
+            aTagList[num].onmouseenter();
+        };
+
         // pagingList 하위의 <a> 태그에 넘버링을 해준다.
         const pagingList = document.getElementById("pagingList");
         const aTagList = pagingList.getElementsByTagName("a");
+        const bannerList = document.getElementById("bannerList");
+        const liTagList = bannerList.getElementsByTagName("li");
+
+        console.log(bannerList);
+        console.log(liTagList);
     
-        for (let i = 0; index < aTagList.length; index++) {
+        for (let index = 0; index < aTagList.length; index++) {
             // 0번 <a> 태그에 num 속성 값을 0으로 부여한다. (각 <a> 태그에 넘버링을 해준다.)
             aTagList[index].num = index;
             aTagList[index].onmouseenter = function() {
@@ -18,15 +53,23 @@
                 // var, let 사용에 관계 없이 num 속성의 값이 올바르게 출력된다.
                 // console.log(this.num);
 
-                for (let i = 0; i < array.length; i++) {
+                for (let i = 0; i < aTagList.length; i++) {
                     // 해당 for문에서의 this는 index에 맞는 aTagList의 <a> 태그를 의미한다.
-                    console.log(i, this.num);
-                }
-            }
-        }
+                    // console.log(i, this.num);
 
-        console.log(aTagList);
-      }
+                    // console.log(i, liTagList[i]);
+
+                    if (i == this.num) {
+                        aTagList[i].className = "bx-pager-link active";
+                        liTagList[i].style.display = "block";
+                    } else {
+                        aTagList[i].className = "bx-pager-link";
+                        liTagList[i].style.display = "none";
+                    }
+                }
+            };
+        }
+      };
 
       window.onload = init;
   </script>
