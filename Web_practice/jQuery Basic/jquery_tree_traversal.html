@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>jquery_tree_traversal</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        const init = function() {
+            $("#checkBtn").on(
+                "click", function() {
+                    // eq(index 기준 숫자)
+                    // .prev() : 이전으로 이동한다.
+                    // .next() : 다음으로 이동한다.
+                    //$("#list3 li:eq(1)").prev().text("CHECK!");     // naver -> CHECK!
+                    //$("#list3 li:eq(1)").text("CHECK!");            // google -> CHECK!
+                    //$("#list3 li:eq(1)").next().text("CHECK!");     // kakao -> CHECK!
+
+                    // .parent() : 부모로 이동한다.
+                    $("#list3 li:eq(1)").parent().css("border", "1px solid red");
+
+                    // .find() : 자식 중 해당하는 태그를 찾는다.
+                    $("#list3 li:eq(1)").find("a").text("HELLO!");
+                }
+            )
+        }
+
+        window.onload = init;
+    </script>
+</head>
+<body>
+    <button id="checkBtn">CHECK</button>
+    <ul id="list1">
+        <hr />
+    </ul>
+    <ul id="list2">
+        <li>01</li>
+        <li>02</li>
+        <li>03</li>
+    </ul>
+    <hr />
+    <ul id="list3">
+        <li><a href="#">naver</a></li>
+        <li><a href="#">google</a></li>
+        <li><a href="#">kakao</a></li>
+    </ul>
+</body>
+</html>
