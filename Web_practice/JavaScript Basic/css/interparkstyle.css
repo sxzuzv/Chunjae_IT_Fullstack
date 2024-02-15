@@ -1,0 +1,23 @@
+html, body {color: #676767;font: 12px/15px "µ¸¿ò",Dotum,Tahoma,Arial;}  
+div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {margin: 0;padding: 0;}
+img {border:none;}
+ol, ul, li {list-style: none;}
+a{text-decoration:none;}
+.displayno {display:none;}
+
+/* custom */
+.customerSection {position: relative; float:left; width:310px; height:400px; margin:0 25px 0 0; background:url('../images/bg_custom.gif') no-repeat; padding:40px 0 30px 0;}
+.customerSection .custom_tit {width:270px; padding:0 20px; }
+.customerSection .custom_name {width:270px; height:20px; padding:0 20px; font-size:18px; font-weight:bold; text-align:center; color:#353535;}
+.customerSection .custom_name em{font-style: normal;}
+.customerSection .custom_part {margin:0; padding:0; width:310px; height:290px; overflow:hidden; display: none;}
+.customerSection .custom_part ul li a {display: block; text-align: center;}
+.customerSection .bx-pager {text-align: center; position: absolute; width: 100%; bottom: 50px; left: 0;}
+.customerSection .bx-pager .bx-pager-item {display: inline-block; *display: inline; *zoom: 1;}
+.customerSection .bx-pager .bx-pager-item + .bx-pager-item {margin-left: 7px;}
+.customerSection .bx-pager .bx-pager-item .bx-pager-link {width:11px; height:12px; background:url('../images/btn_select.png') no-repeat -18px 0; display: block; text-indent: -9999em;}
+.customerSection .bx-pager .bx-pager-item .bx-pager-link.active {background-position:0 0;}
+.customerSection .bx-prev,
+.customerSection .bx-next {position: absolute; top: 193px; width: 25px; height: 32px; text-indent: -9999em; z-index: 51;}
+.customerSection .bx-prev {left: 0; background: url(http://openimage.interpark.com/welcome_2015/btn_prev.gif) no-repeat}
+.customerSection .bx-next {right: 0; background: url(http://openimage.interpark.com/welcome_2015/btn_next.gif) no-repeat}
