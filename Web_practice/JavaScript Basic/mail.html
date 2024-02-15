@@ -8,7 +8,7 @@
         const init = function() {
             // const mailList = document.getElementById("mailList");
             const mailIdList = document.getElementsByName("mailId");
-            // const checkAllInput = document.getElementById("checkAll");
+            const checkAllInput = document.getElementById("checkAll");
             
             // console.log(checkAllInput);
             // console.log(mailList);
@@ -50,6 +50,8 @@
                     } else {
                         mailIdTr.className = "";
                     }
+                    // 하위 체크박스 중 하나라도 체크되지 않았다면 전체 체크박스 선택을 해제한다.
+                    checkAllInput.checked = false;
                 }
             }
 
