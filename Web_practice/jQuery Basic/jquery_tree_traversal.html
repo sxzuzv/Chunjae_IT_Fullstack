@@ -20,7 +20,7 @@
                     // .find() : 자식 중 해당하는 태그를 찾는다.
                     $("#list3 li:eq(1)").find("a").text("HELLO!");
                 }
-            )
+            );
 
             $("#sendBtn").on(
                 "click", function() {
@@ -29,7 +29,7 @@
                     const idInput = $("input[name='id']").val();
                     console.log(idInput);
                 }
-            )
+            );
 
             // 함수의 파라미터로 이벤트 이름과 함수를 넣어준다.
             // 이때 e는 키보드 입력에 대한 정보를 의미한다.
@@ -43,8 +43,8 @@
                         console.log("Enter!");
                     }
                 }
-            )
-        }
+            );
+        };
 
         window.onload = init;
     </script>
