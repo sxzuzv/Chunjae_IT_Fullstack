@@ -6,7 +6,26 @@
   <link href="css/interparkstyle.css" type="text/css" rel="stylesheet" />
   <script type="text/javascript">
 	  const init = function() {
-        
+        // pagingList 하위의 <a> 태그에 넘버링을 해준다.
+        const pagingList = document.getElementById("pagingList");
+        const aTagList = pagingList.getElementsByTagName("a");
+    
+        for (let i = 0; index < aTagList.length; index++) {
+            // 0번 <a> 태그에 num 속성 값을 0으로 부여한다. (각 <a> 태그에 넘버링을 해준다.)
+            aTagList[index].num = index;
+            aTagList[index].onmouseenter = function() {
+                // console.log(aTagList[index].num);
+                // var, let 사용에 관계 없이 num 속성의 값이 올바르게 출력된다.
+                // console.log(this.num);
+
+                for (let i = 0; i < array.length; i++) {
+                    // 해당 for문에서의 this는 index에 맞는 aTagList의 <a> 태그를 의미한다.
+                    console.log(i, this.num);
+                }
+            }
+        }
+
+        console.log(aTagList);
       }
 
       window.onload = init;
