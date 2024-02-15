@@ -21,12 +21,39 @@
                     $("#list3 li:eq(1)").find("a").text("HELLO!");
                 }
             )
+
+            $("#sendBtn").on(
+                "click", function() {
+                    // CSS 문법 사용
+                    // .val() : 값(value)을 가져온다.
+                    const idInput = $("input[name='id']").val();
+                    console.log(idInput);
+                }
+            )
+
+            // 함수의 파라미터로 이벤트 이름과 함수를 넣어준다.
+            // 이때 e는 키보드 입력에 대한 정보를 의미한다.
+            $("input[name='id']").on(
+                "keyup", function(e) {
+                    // console.log(e);
+
+                    // .toLowerCase() : 대문자 -> 소문자
+                    // .toUpperCase() : 소문자 -> 대문자
+                    if (e.key.toLowerCase() == "enter") {
+                        console.log("Enter!");
+                    }
+                }
+            )
         }
 
         window.onload = init;
     </script>
 </head>
 <body>
+    <!-- action란의 URL이 비워져 있을 시, 본인에게 데이터를 넘긴다. -->
+    <form action="" method="GET">
+        id : <input type="text" name="id" /> <input type="text" name="pw" /> <button id="sendBtn" type="button">전송</button>
+    </form>
     <button id="checkBtn">CHECK</button>
     <ul id="list1">
         <hr />
