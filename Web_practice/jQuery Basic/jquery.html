@@ -27,12 +27,28 @@
                     console.log($(this).attr("id"));
                 }
             )
+
+            // <button> 태그에 클릭 이벤트를 생성한다.
+            $("#addBtn").on(
+                "click", function() {
+                    // $("#myList").append("<li>myList01</li>");    // 노드의 가장 마지막에 추가
+                    //$("#myList").prepend("<li>myList01</li>");    // 노드의 가장 처음에 추가
+
+                    // 아래와 같은 방식으로 태그를 생성할 수도 있다.
+                    const li = document.createElement("li");
+                    $("#myList").append(li);
+                }
+            )
         };
 
         window.onload = init;
     </script>
 </head>
 <body>
+    <button id="addBtn">ADD</button>
+    <ul id="myList">
+
+    </ul>
     <div id="box">TEXT</div>
 </body>
 </html>
