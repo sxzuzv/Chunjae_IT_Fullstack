@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title> new document </title>
+  <link href="css/addressList.css" type="text/css" rel="stylesheet" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
+  <script type="text/javascript">
+	 
+  </script>
+ </head>
+ <body>
+<form name="frm" method="post">	
+	<label for="mem_name">이름</label>
+	<input type="text" id="userName" size="15" name="userName" maxlength="10"/>
+	<label for="mem_phone">핸드폰번호</label>
+	<input type="text" id="userPhone" size="20" maxlength="11" name="userPhone"/>
+	<a href="#" id="addBtn"><img src="images/btn_add.gif" alt="추가"/></a>		
+</form>
+<table id="adressList">
+	<caption>전화번호부</caption>
+	<colgroup>
+		<col width="40%" />
+		<col width="40%" />
+		<col width="20%" />
+	</colgroup>
+	<thead>
+		<tr>
+			<th scope="col">이름</th>
+			<th scope="col">전화번호</th>
+			<th scope="col">삭제</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td colspan="3">등록 된 내용이 없습니다.</td>
+		</tr>
+		<!--
+		<tr>
+			<td>양영보</td>
+			<td>010-1111-2222</td>
+			<td>
+				<a href="#"><img src="images/btn_del.gif" alt="삭제" /></a>
+			</td>
+		</tr>
+		-->
+	</tbody>
+</table>
+ </body>
+</html>
