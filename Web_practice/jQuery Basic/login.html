@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title> new document </title>
+  <link href="css/common.css" type="text/css" rel="stylesheet"  media="screen" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script type="text/javascript">
+	  const init = function() {
+		$("#loginBtn").on(
+			"click", function(e) {
+				e.preventDefault();						// 이중 클릭을 방지한다.
+				console.log(e);							// 로그인 버튼 클릭 시, <a> 태그의 # 경로로 이동하지 않는다.
+
+				// $.trim() : 텍스트 양쪽 공백 제거
+				// 텍스트 공백 제거 시, 데이터를 불러올 때부터 제거 작업을 적용한다.
+				const emailValue = $.trim($("#email").val());
+				const passwordValue = $.trim($("#passwd").val());
+				// console.log(emailValue);
+
+				if (emailValue == "") {
+					alert("아이디를 입력해주세요!");
+
+					// 커서가 아이디 입력란으로 이동한다.
+					$("#email").focus();
+
+					// 경고창이 출력될 경우, 이후 작업을 제거하기 위해 임의의 반환값을 지정한다.ㅇ
+					return false;
+				}
+
+				if (passwordValue == "") {
+					alert("비밀번호를 입력해주세요!");
+
+					$("#passwd").focus();
+
+					return false;
+				}
+
+				if (passwordValue.length < 5) {
+					alert("비밀번호는 최소 5자리 이상으로 입력해주세요!");
+
+					$("#passwd").focus();
+
+					return false;
+				}
+				console.log('LOGIN!');
+			}
+		);
+	  }
+
+	  window.onload = init;
+  </script>
+ </head>
+ <body>
+	<form name="frm_login" method="post" action="" class="lSearch">
+		<fieldset class="mLogin">
+			<legend>로그인</legend>
+			<h3><img src="images/tit_login.png" alt="로그인 - 소셜 간편 로그인/ msp 멤버십 로그인"></h3>
+			<dl class="log">
+				<dt class="id">아이디</dt>
+				<dd class="id">
+					<input type="text" class="it" title="아이디" id="email" name="email" placeholder="아이디" />
+				</dd>
+				<dt class="pw">비밀번호</dt>
+				<dd class="pw">
+					<input type="password" class="it" title="비밀번호" id="passwd" name="passwd" maxlength="20" placeholder="비밀번호" />
+				</dd>
+			</dl>
+			<div class="check">
+				<label for="saveCheck">
+					<span class="checkbox" style="background-position: 0px 0px;" id="saveCheckbox"></span>
+					<input type="checkbox" class="styled" name="chk_saveID" value="Y" id="saveCheck" />로그인 상태 유지
+				</label>
+			</div>
+			<div class="mButton1">
+				<a href="#" id="loginBtn"><img src="images/btn_signin.png" alt="SIGN IN"></a>
+			</div>
+			<div class="link">
+				<a href="#">회원가입</a>
+				<span class="bar">|</span>
+				<a href="#">아이디/비밀번호 찾기</a>
+			</div>
+		</fieldset>
+	 </form>
+ </body>
+</html>
