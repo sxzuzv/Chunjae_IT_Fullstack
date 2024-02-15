@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <title> new document </title>
+    <link href="css/mailstyle.css" type="text/css" rel="stylesheet" />
+	<script type="text/javascript">
+        const init = function() {
+            // const mailList = document.getElementById("mailList");
+            const mailIdList = document.getElementsByName("mailId");
+            // const checkAllInput = document.getElementById("checkAll");
+            
+            // console.log(checkAllInput);
+            // console.log(mailList);
+            // console.log(mailIdList);
+
+            for (let index = 0; index < mailIdList.length; index++) {
+                mailIdList[index].onclick = function() {
+                    // id 속성 형태 : "mailId_숫자"
+                    const mailIdTr = document.getElementById("mailId_" + this.value);
+
+                    // this는 이벤트가 걸린 property를 의미한다.
+                    // console.log(this.checked, this.value);
+
+                    // 선택된 메일의 경우, 배경색이 표시된다.
+                    if (this.checked) {
+                        mailIdTr.className = "selected";
+                    } else {
+                        mailIdTr.className = "";
+                    }
+                };
+            }
+
+            // 전체 선택 체크박스에 대한 이벤트 함수를 작성한다.
+            // 해당 체크박스 선택 여부에 따라 하위 체크박스의 선택 여부가 달라진다.
+            document.getElementById("checkAll").onclick = function() {
+                console.log(this.checked);
+            }
+        }
+
+        window.onload = init;
+	</script>
+ </head>
+ <body>
+  <input type="button" id="delBtn" class="delBtn" value="삭제" />	 	
+  <table id="mailList">
+	<caption>메일폼</caption>
+	<colgroup>
+		<col width="10%"/>
+		<col width="10%"/>
+		<col width="*"/>
+		<col width="10%"/>
+		<col width="10%"/>
+	</colgroup>
+	<thead>
+		<tr>
+			<th><input type="checkbox" id="checkAll" /></th>
+			<th>보낸사람</th>
+			<th>제목</th>
+			<th>날짜</th>
+			<th>크기</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr id="mailId_10">
+			<td><input type="checkbox" name="mailId" value="10" /></td>
+			<td>홍길동</td>
+			<td>메일제목입니다.</td>
+			<td>2024.02.14</td>
+			<td>23kb</td>
+		</tr>
+		<tr id="mailId_9">
+			<td><input type="checkbox" name="mailId" value="9" /></td>
+			<td>홍길동</td>
+			<td>메일제목입니다.</td>
+			<td>2024.02.14</td>
+			<td>23kb</td>
+		</tr>
+		<tr id="mailId_8">
+			<td><input type="checkbox" name="mailId" value="8" /></td>
+			<td>홍길동</td>
+			<td>메일제목입니다.</td>
+			<td>2024.02.14</td>
+			<td>23kb</td>
+		</tr>
+		<tr id="mailId_7">
+			<td><input type="checkbox" name="mailId" value="7" /></td>
+			<td>홍길동</td>
+			<td>메일제목입니다.</td>
+			<td>2024.02.14</td>
+			<td>23kb</td>
+		</tr>
+		<tr id="mailId_6">
+			<td><input type="checkbox" name="mailId" value="6" /></td>
+			<td>홍길동</td>
+			<td>메일제목입니다.</td>
+			<td>2024.02.14</td>
+			<td>23kb</td>
+		</tr>
+		<tr id="mailId_5">
+			<td><input type="checkbox" name="mailId" value="5" /></td>
+			<td>홍길동</td>
+			<td>메일제목입니다.</td>
+			<td>2024.02.14</td>
+			<td>23kb</td>
+		</tr>
+		<tr id="mailId_4">
+			<td><input type="checkbox" name="mailId" value="4" /></td>
+			<td>홍길동</td>
+			<td>메일제목입니다.</td>
+			<td>2024.02.14</td>
+			<td>23kb</td>
+		</tr>
+		<tr id="mailId_3">
+			<td><input type="checkbox" name="mailId" value="3" /></td>
+			<td>홍길동</td>
+			<td>메일제목입니다.</td>
+			<td>2024.02.14</td>
+			<td>23kb</td>
+		</tr>
+		<tr id="mailId_2">
+			<td><input type="checkbox" name="mailId" value="2" /></td>
+			<td>홍길동</td>
+			<td>메일제목입니다.</td>
+			<td>2024.02.14</td>
+			<td>23kb</td>
+		</tr>
+		<tr id="mailId_1">
+			<td><input type="checkbox" name="mailId" value="1" /></td>
+			<td>홍길동</td>
+			<td>메일제목입니다.</td>
+			<td>2024.02.14</td>
+			<td>23kb</td>
+		</tr>
+	</tbody>
+  </table>
+ </body>
+</html>
