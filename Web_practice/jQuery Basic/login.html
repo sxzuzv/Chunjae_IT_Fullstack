@@ -46,6 +46,16 @@
 				console.log('LOGIN!');
 			}
 		);
+
+		// password 입력창에서 Enter를 눌렀을 때, Login 클릭 이벤트를 강제로 발생시킨다.
+		$("#passwd").on(
+                "keyup", function(e) {
+                    if (e.key.toLowerCase() == "enter") {
+						// 로그인 버튼이 클릭되는 이벤트를 강제로 발생시킨다.
+						$("#loginBtn").trigger("click");
+                    }
+                }
+            );
 	  }
 
 	  window.onload = init;
