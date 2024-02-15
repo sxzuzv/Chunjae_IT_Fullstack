@@ -1,0 +1,35 @@
+<!-- MOVE 버튼을 누르면 list2의 내용이 list1으로 이동한다. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>jquery_tag_move</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        const init = function() {
+            $("#moveBtn").on(
+                "click", function() {
+                    // list1에 list2의 첫 번째 요소를 이동해서 붙인다.
+                    // $("#list1").append($("#list2 li:first"))
+
+                    // list1에 list2의 첫 번째 요소를 이동해서 붙이되, 기존 요소가 후순위로 밀려난다.
+                    $("#list1").prepend($("#list2 li:first"));
+                }
+            )
+        }
+
+        window.onload = init;
+    </script>
+</head>
+<body>
+    <button id="moveBtn">MOVE</button>
+    <ul id="list1">
+        <hr />
+    </ul>
+    <ul id="list2">
+        <li>01</li>
+        <li>02</li>
+        <li>03</li>
+    </ul>
+</body>
+</html>
