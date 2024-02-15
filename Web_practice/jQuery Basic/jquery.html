@@ -28,7 +28,7 @@
                 }
             )
 
-            // <button> 태그에 클릭 이벤트를 생성한다.
+            // <button> 태그에 클릭 시 작동할 이벤트(Element Create)를 생성한다.
             $("#addBtn").on(
                 "click", function() {
                     // $("#myList").append("<li>myList01</li>");    // 노드의 가장 마지막에 추가
@@ -39,6 +39,19 @@
                     $("#myList").append(li);
                 }
             )
+
+            // <button> 태그에 클릭 시 작동할 이벤트(Element Remove)를 생성한다.
+            $("#delBtn").on(
+                "click", function() {
+                    // 요소 자체를 삭제한다.
+                    $("#box").remove();
+
+                    // 첫 번째 자식 요소를 삭제한다.
+                    // $("#myList li:first").remove();
+                    // 마지막 자식 요소를 삭제한다.
+                    $("#myList li:last").remove();
+                }
+            )
         };
 
         window.onload = init;
@@ -46,8 +59,9 @@
 </head>
 <body>
     <button id="addBtn">ADD</button>
+    <button id="delBtn">DELETE</button>
     <ul id="myList">
-
+        <li>temp</li>
     </ul>
     <div id="box">TEXT</div>
 </body>
