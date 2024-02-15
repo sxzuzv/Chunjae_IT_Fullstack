@@ -4,8 +4,35 @@
     <title>jquery</title>
     <!-- Google CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        const init = function() {
+            // console.log($("#box"));
+
+            // <div> 태그 내부 콘텐츠를 변경한다.
+            // $("#box").text("HEY!");
+
+            // <div> 태그 클릭 시, 내부 콘텐츠를 변경한다.
+            $("#box").on(
+                "click", function() {
+                    // $("#box").text("HELLO~");
+                    
+                    // JavaScript 문법을 사용 (jQuery 문법이 아님에 유의)
+                    // this.innerText = "BOX CLICK!";
+
+                    // jQuery 문법을 사용하도록 변경한다.
+                    // $() 형태로 변경 시, 문법 변경이 가능하다.
+                    $(this).text("BOX CLICK!");
+                    
+                    // <div> 태그의 Attribute를 가져온다.
+                    console.log($(this).attr("id"));
+                }
+            )
+        };
+
+        window.onload = init;
+    </script>
 </head>
 <body>
-    
+    <div id="box">TEXT</div>
 </body>
 </html>
