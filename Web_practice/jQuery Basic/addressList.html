@@ -66,7 +66,16 @@
 
 				// form에 입력된 내용(이름, 핸드폰 번호)을 주소록에 추가한다.
 				$(tr).append("<td>"+userName+"</td>");
-				$(tr).append("<td>"+userPhone+"</td>");
+
+				// 핸드폰 번호를 '-' 기준으로 자른다.
+				// .substring(시작 인덱스, 마지막 인덱스) : 이때, 마지막 인덱스 - 1까지의 값이 반환된다.
+				// console.log(userPhone.substring(0, 3));
+
+				let userPhoneStr = userPhone.substring(0, 3);				// 핸드폰 번호 첫 세 자리
+				userPhoneStr = userPhoneStr + "-" + userPhone.substring(3, 7);	// 핸드폰 번호 중간 네 자리
+				// .substring()의 마지막 인덱스 미지정 시, default는 가장 끝 인덱스가 된다.
+				userPhoneStr = userPhoneStr + "-" + userPhone.substring(7);		// 핸드폰 번호 마지막 네 자리
+				$(tr).append("<td>"+userPhoneStr+"</td>");
 
 				// console.log($(tr).append("<td>HI</td>"));		// <tr> 기준으로 붙인다.
 				// console.log($("<td>HI</td>").appendTo(tr));		// <td> 기준으로 붙인다. (뒤집어서 붙이는 개념, 자식 기준 부모 붙이기)
