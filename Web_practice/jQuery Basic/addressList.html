@@ -16,9 +16,28 @@
 			</td>
 		</tr>
 		*/
+
+		// 주소록 리스트에 rowCount 이름으로 0을 저장한다.
+		// '추가하기' 버튼 클릭 시, rowCount가 0이면 데이터를 추가한다.
+		// rowCount가 0이 아닐 시, 값을 +1 해주고 데이터를 추가한다.
+		$("#addressList").data("rowCount", 0);
+
 		$("#addBtn").on(
 			"click", function(e) {
 				e.preventDefault();	// 이중 클릭 방지
+
+				// rowCount 값을 가져온다.
+				const rowCount = $("#addressList").data("rowCount");
+
+				if (rowCount == 0) {
+					// '등록된 내용이 없습니다.'를 지운다.
+					$("#addressList tbody tr").remove();
+				}
+
+				// rowCount의 값에 1을 더한다.
+				$("#addressList").data("rowCount", rowCount + 1);
+
+				console.log($("#addressList").data("rowCount"));
 
 				// <tr> 태그를 만든다. (이때, <tr> 태그와 <td> 태그를 <tbody> 하위에 붙이는 명령이 있어야 한다.)
 				const tr = document.createElement("tr");
@@ -39,6 +58,16 @@
 					"click", function() {
 						// 자신을 기준으로 부모 <tr> 태그를 삭제한다.
 						$(this).parent().parent().remove();
+					
+						const rowCount = $("#addressList").data("rowCount");
+						const nextRowCount = rowCount - 1;
+
+						$("addressList").data("rowCount", nextRowCount);
+
+						if (nextRowCount == 0) {
+							// '등록된 내용이 없습니다.'를 띄운다.
+							$("#addressList tbody").append("<tr><td colspan=\"3\">등록된 내용이 없습니다.</td></tr>");
+						}
 					}
 				)
 
@@ -79,7 +108,7 @@
 	</thead>
 	<tbody>
 		<tr>
-			<td colspan="3">등록 된 내용이 없습니다.</td>
+			<td colspan="3">등록된 내용이 없습니다.</td>
 		</tr>
 	</tbody>
 </table>
