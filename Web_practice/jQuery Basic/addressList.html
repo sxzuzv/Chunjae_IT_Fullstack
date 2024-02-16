@@ -109,6 +109,10 @@
 		// 핸드폰 번호 작성 후 enter 입력 시, 주소록에 추가한다.
 		$("#userPhone").on(
 			"keyup", function(e) {
+				// 0부터 9에 해당하지 '않는' 문자에 대해 '공백'으로 바꾼다. (정규 표현식 사용)
+				// 입력할 때 숫자가 아닌 문자를 입력하면 즉시 공백으로 바뀐다.
+				this.value = this.value.replace(/[^0-9]/gi, '');
+
 				if (e.key.toLowerCase() == "enter") {	// enter 버튼을 누르면
 					// addBtn의 click 이벤트가 발생하게 한다.
 					$("#addBtn").trigger("click");
