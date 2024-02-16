@@ -99,6 +99,32 @@
                     dataType: 'JSON',
                     success: function(data){
                         console.log("list result ", data);
+
+                        if (data.result == 0) {             // 불러온 데이터가 없는 경우
+                            // data empty
+                            /* 아래 내용을 출력한다.
+                                <tr>
+                                    <td colspan="4" style="text-align:center;">등록 된 내용이 없습니다.</td>
+                                </tr>
+                            */
+
+                            const tr = document.createElement("tr");
+                            const tdText = '<td colspan="4" style="text-align:center;">등록된 내용이 없습니다.</td>';
+                            $(tr).append(tdText);
+
+                            $("#list tbody").append(tr);
+                        } else {                            // 불러온 데이터가 있는 경우우
+                            /* 아래 형태로 데이터를 출력한다.
+                                <tr>
+                                    <td>5</td>
+                                    <td>테스트 5</td>
+                                    <td>2022-02-02 16:51:02</td>
+                                    <td>
+                                        <button type="button" class="btn btn-success mr-1">수정</button><button type="button" class="btn btn-danger">삭제</button>
+                                    </td>
+                                </tr>
+                            */
+                        }
                     },
                     error: function(jqXHR, textStatus, errorThrown){
                         alert(textStatus);
