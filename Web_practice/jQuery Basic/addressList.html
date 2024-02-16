@@ -26,6 +26,28 @@
 			"click", function(e) {
 				e.preventDefault();	// 이중 클릭 방지
 
+				/* form 검증 */
+				const userName = $.trim($("#userName").val());			// 사용자 이름 값(좌우 공백 제거)을 저장한다.
+				const userPhone = $.trim($("#userPhone").val());		// 핸드폰 번호 값(좌우 공백 제거)을 저장한다.
+
+				if (userName == "") {
+					alert("이름을 입력해주세요.");
+					$("#userName").focus();
+					return false;			// 이후 작업을 막는다.
+				}
+
+				if (userPhone == "") {
+					alert("핸드폰 번호를 입력해주세요.");
+					$("#userPhone").focus();
+					return false;
+				}
+
+				if (userPhone.length < 11) {
+					alert("핸드폰 번호는 11자리를 입력해 주셔야 합니다");
+					$("#userPhone").focus();
+					return false;
+				}
+
 				// rowCount 값을 가져온다.
 				const rowCount = $("#addressList").data("rowCount");
 
@@ -41,8 +63,10 @@
 
 				// <tr> 태그를 만든다. (이때, <tr> 태그와 <td> 태그를 <tbody> 하위에 붙이는 명령이 있어야 한다.)
 				const tr = document.createElement("tr");
-				$(tr).append("<td>홍길동</td>");
-				$(tr).append("<td>010-2222-3333</td>");
+
+				// form에 입력된 내용(이름, 핸드폰 번호)을 주소록에 추가한다.
+				$(tr).append("<td>"+userName+"</td>");
+				$(tr).append("<td>"+userPhone+"</td>");
 
 				// console.log($(tr).append("<td>HI</td>"));		// <tr> 기준으로 붙인다.
 				// console.log($("<td>HI</td>").appendTo(tr));		// <td> 기준으로 붙인다. (뒤집어서 붙이는 개념, 자식 기준 부모 붙이기)
@@ -74,9 +98,21 @@
 				// <tbody> 태그 하위에 생성한 태그들을 붙여준다.
 				$("#addressList tbody").append(tr);
 
+				// form reset (이름, 핸드폰 번호 form에 입력됐던 기존 내용을 지운다.)
+				$("#userName,#userPhone").val("");
 
 				// 역슬래시 삽입 시, 문자열로 인식한다.
 				// $(tr).append("<td><a href=\"#\"><img src=\"images/btn_del.gif\" alt=\"삭제\" /></a></td>");
+			}
+		);
+
+		// 핸드폰 번호 작성 후 enter 입력 시, 주소록에 추가한다.
+		$("#userPhone").on(
+			"keyup", function(e) {
+				if (e.key.toLowerCase() == "enter") {	// enter 버튼을 누르면
+					// addBtn의 click 이벤트가 발생하게 한다.
+					$("#addBtn").trigger("click");
+				}
 			}
 		);
 	 }
