@@ -11,11 +11,12 @@
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="text/javascript">
-      const init = () => {
+      function writeFormInit () {
         // 등록 버튼
         $('#regBtn').on(
           'click',
           function(){
+            // 등록 버튼 클릭 시, 글쓰기 화면을 표시 상태로 전환한다.
             $('#list, #regBtn').hide();
             $('#writeForm').show();
 
@@ -63,6 +64,8 @@
 
                             if (data.result == 'Y') {
                                 alert("입력 성공!");
+                                // 전송 후 메인 화면으로 돌아온다.
+                                $("#writeCloseBtn").trigger("click");
                             } else {
                                 alert("입력 실패!");
                             }
@@ -71,7 +74,7 @@
                             alert(textStatus);
                         }
                     }
-                )
+                );
           }
         );
 
@@ -84,6 +87,30 @@
           }
         );
       };
+
+      const getList = function() {
+        const apiUrl = "http://diddudqh.dothome.co.kr/board/list.php";
+
+        $.ajax(
+                {
+                    type: "GET",
+                    url: apiUrl,
+                    data:{},
+                    dataType: 'JSON',
+                    success: function(data){
+                        console.log("list result ", data);
+                    },
+                    error: function(jqXHR, textStatus, errorThrown){
+                        alert(textStatus);
+                    }
+                }
+            );
+      }
+
+      const init = function() {
+        writeFormInit();
+        getList();
+      }
 
       window.onload = init;
     </script>
@@ -185,7 +212,6 @@
                 </div>
             </form>
           </div>
-
     </main>
 </body>
 </html>
