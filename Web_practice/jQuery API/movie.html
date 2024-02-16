@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>MOVIE</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <style type="text/css">
         table td,table th {
@@ -28,6 +28,10 @@
       function init(){
         $("#searchForm input[name='searchDate']").datepicker().datepicker('setDate', '-1D');
 
+        // 비동기 방식으로 상업영화 or 다양성영화 박스오피스 데이터를 불러온다.
+        // 이때, 어떤 데이터를 먼저 받아오게 될지 모르므로 데이터에 따라 출력할 테이블을 지정해줘야 한다.
+
+        // 영화진흥위원회 OPEN API를 활용하여 '일별 상업영화 박스오피스' 데이터를 불러온다.
         $("#searchBtn").on(
             "click", function() { // 검색 버튼 클릭 시
                 // 날짜 정보를 저장한다.
@@ -47,6 +51,7 @@
                     },
                     dataType: "json",
                     success: function(data) {
+                        makeBoxOfficeList(data.boxOfficeResult.dailyBoxOfficeList, "list1");     // 함수 실행
                         console.log(data);
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
@@ -56,6 +61,54 @@
                 );
             }
         );
+
+        // 영화진흥위원회 OPEN API를 활용하여 '일별 다양성영화 박스오피스' 데이터를 불러온다.
+        $("#searchBtn").on(
+            "click", function() { // 검색 버튼 클릭 시
+                // 날짜 정보를 저장한다.
+                const searchDate = $("#searchForm input[name='searchDate']").val();
+                // URL 정보를 저장한다.
+                const apiUrl = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json";
+                // ?key=12bc4a4886a4d27c92071110f92ff223&targetDt=20240214&multiMovieYn=N
+
+                $.ajax(
+                    {
+                    type:"GET",
+                    url: apiUrl,
+                    data: {
+                        key : "12bc4a4886a4d27c92071110f92ff223",
+                        targetDt : searchDate,
+                        multiMovieYn : "Y"
+                    },
+                    dataType: "json",
+                    success: function(data) {
+                        makeBoxOfficeList(data.boxOfficeResult.dailyBoxOfficeList, "list2");     // 함수 실행
+                        console.log(data);
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        alert(textStatus + "," + errorThrown);
+                    }
+                }
+                );
+            }
+        );
+
+        const makeBoxOfficeList = function(boxOfficeList, tableId) {
+            $(boxOfficeList).each(
+                // index에 해당하는 요소를 꺼내와서 출력한다. (index 개수만큼 작업이 실행된다.)
+                function(index, element) {
+                    // 검색 결과가 브라우저에 출력될 수 있도록 요소를 추가한다.
+                    const tr = document.createElement("tr");
+                    $(tr).append("<td>" + element.rank + "</td>");
+                    $(tr).append("<td>" + element.rankInten + "</td>");
+                    $(tr).append("<td>" + element.movieNm + "</td>");
+                    $(tr).append("<td>" + element.audiAcc + "</td>");
+
+                    // 출력할 테이블 ID를 고려하여 데이터를 요소에 추가한다.
+                    $("#"+tableId+" tbody").append(tr);
+                }
+            )
+        }
         }
 
       window.onload = init;
@@ -63,7 +116,7 @@
 </head>
 <body>
     <div class="container" style="margin-top:30px;">
-        <h1>영진위 API 연동</h1>
+        <h1>영화진흥위원회 API 연동</h1>
         <form id="searchForm" action="#" method="post" class="form-inline">
             <input type="input" name="searchDate" class="form-control mr-1" readonly="readonly" />
             <button type="button" id="searchBtn" class="btn btn-primary">검색</button>
