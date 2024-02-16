@@ -231,10 +231,22 @@
                 $("#list").hide();
                 $("#modifyForm").show();
 
+                // 상세 보기 화면에서의 등록 버튼을 숨긴다.
+                $("#regBtn").hide();
+
                 // 기존 글번호, 제목, 내용 값을 출력한다.
                 $("#modifyForm input[name='id']").val(data.id);
                 $("#modifyForm input[name='title']").val(data.title);
                 $("#modifyForm textarea[name='content']").val(data.content);
+
+                // 상세 보기 페이지에서 '닫기' 버튼 클릭 시, 메인 화면으로 돌아간다.
+                // 상세 보기 페이지를 숨기고, 리스트와 등록 버튼을 출력한다.
+                $("#modifyCloseBtn").on(
+                    "click", function() {
+                        $('#modifyForm').hide();
+                        $('#list, #regBtn').show();
+                    }
+                )
             }
       }
 
@@ -266,7 +278,7 @@
                 </colgroup>
                 <thead class="thead-dark">
                   <tr>
-                    <th scope="col">글번호</th>
+                    <th scope="col">번호</th>
                     <th scope="col">제목</th>
                     <th scope="col">날짜</th>
                     <th scope="col">관리</th>
@@ -322,7 +334,7 @@
                   </colgroup>
                   <tbody class="thead-dark">
                     <tr>
-                      <th>글 번호</th>
+                      <th>번호</th>
                       <td><input type="input" name="id" class="form-control" readonly="readonly" /></td>
                     </tr>
                     <tr>
