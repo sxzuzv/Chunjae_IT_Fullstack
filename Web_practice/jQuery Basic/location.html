@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>location</title>
+  <script>
+    const init = () => {
+      document.getElementById('moveBtn').onclick = () => {
+          // 설정된 링크로 이동한다.
+          location.href = "http://www.naver.com";
+      }
+
+      document.getElementById('reloadBtn').onclick = () => {
+          // 페이지를 새로고침한다.
+          location.reload();
+      }
+
+      document.getElementById('agentBtn').onclick = () => {
+          // 접속 유저에 대한 정보를 확인한다. 
+          alert(navigator.userAgent);
+      }
+    }
+
+    window.onload = init;
+  </script>
+</head>
+<body>
+  <button id="moveBtn">MOVE</button>
+  <button id="reloadBtn">RELOAD</button>
+  <button id="agentBtn">AGENT</button>
+</body>
+</html>
