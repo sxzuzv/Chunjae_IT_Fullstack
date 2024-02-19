@@ -86,7 +86,7 @@
             $('#list, #regBtn').show();
           }
         );
-      };
+      }
 
       const getList = function() {
         const apiUrl = "http://diddudqh.dothome.co.kr/board/list.php";
@@ -168,7 +168,7 @@
                                                                     alert("조회 정보가 없습니다.");
                                                                 } else {
                                                                     console.log("view result", data);
-                                                                    modifyFormInit(data.result[0]);
+                                                                    modifyForm(data.result[0]);
                                                                 }
                                                         },
                                                         error: function(jqXHR, textStatus, errorThrown){
@@ -226,8 +226,33 @@
                 }
             );
 
+            // 상세 보기 화면을 출력한다. (기존 코드 -> 코드를 분리한다.)
+            // const modifyFormInit = function (data) {
+            //     $("#list").hide();
+            //     $("#modifyForm").show();
+
+                // 상세 보기 화면에서의 등록 버튼을 숨긴다.
+                // $("#regBtn").hide();
+
+                // 기존 글번호, 제목, 내용 값을 출력한다.
+                // $("#modifyForm input[name='id']").val(data.id);
+                // $("#modifyForm input[name='title']").val(data.title);
+                // $("#modifyForm textarea[name='content']").val(data.content);
+
+                // 상세 보기 페이지에서 '닫기' 버튼 클릭 시, 메인 화면으로 돌아간다.
+                // 상세 보기 페이지를 숨기고, 리스트와 등록 버튼을 출력한다.
+
+                // 해당 위치에 코드를 작성하면 상세 보기 화면을 출력할 시 계속해서 이벤트가 실행된다. (X)
+                // $("#modifyCloseBtn").on(
+                //     "click", function() {
+                //         $('#modifyForm').hide();
+                //         $('#list, #regBtn').show();
+                //     }
+                // );
+            // }
+
             // 상세 보기 화면을 출력한다.
-            const modifyFormInit = function (data) {
+            const modifyForm = function (data) {
                 $("#list").hide();
                 $("#modifyForm").show();
 
@@ -238,15 +263,17 @@
                 $("#modifyForm input[name='id']").val(data.id);
                 $("#modifyForm input[name='title']").val(data.title);
                 $("#modifyForm textarea[name='content']").val(data.content);
+            }
 
-                // 상세 보기 페이지에서 '닫기' 버튼 클릭 시, 메인 화면으로 돌아간다.
-                // 상세 보기 페이지를 숨기고, 리스트와 등록 버튼을 출력한다.
-                $("#modifyCloseBtn").on(
+            // 상세 보기 페이지에서 '닫기' 버튼 클릭 시, 메인 화면으로 돌아간다.
+            // 상세 보기 페이지를 숨기고, 리스트와 등록 버튼을 출력한다.
+            const modifyFormInit = function() {
+              $("#modifyCloseBtn").on(
                     "click", function() {
                         $('#modifyForm').hide();
                         $('#list, #regBtn').show();
                     }
-                )
+                );
             }
       }
 
