@@ -202,8 +202,8 @@
 
                                                             if (data.result == 'Y') {
                                                                 alert("삭제 성공!");
-                                                                // 전송 후 메인 화면으로 돌아온다.
-                                                                $("#writeCloseBtn").trigger("click");
+                                                                // 삭제 후, 메인 화면으로 돌아온다.
+                                                                getList();
                                                             } else {
                                                                 alert("삭제 실패!");
                                                             }
