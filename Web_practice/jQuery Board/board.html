@@ -186,25 +186,26 @@
                                             const result = confirm("정말 삭제할까요?");
                                             if(!result) return false;
 
-                                            const apiUrl = 'http://diddudqh.dothome.co.kr/board/insert.php';
+                                            const apiUrl = 'http://diddudqh.dothome.co.kr/board/delete.php';
                                             $.ajax(
                                                     {
-                                                        type: "POST",
+                                                        type: "GET",
                                                         url: apiUrl,
                                                         data:{
-                                                            title: title,
-                                                            content: content
+                                                            id: $(this).data("id")
+                                                            // title: title,
+                                                            // content: content
                                                         },
                                                         dataType: 'JSON',
                                                         success: function(data){
                                                             console.log("insert result ", data);
 
                                                             if (data.result == 'Y') {
-                                                                alert("입력 성공!");
+                                                                alert("삭제 성공!");
                                                                 // 전송 후 메인 화면으로 돌아온다.
                                                                 $("#writeCloseBtn").trigger("click");
                                                             } else {
-                                                                alert("입력 실패!");
+                                                                alert("삭제 실패!");
                                                             }
                                                         },
                                                         error: function(jqXHR, textStatus, errorThrown){
