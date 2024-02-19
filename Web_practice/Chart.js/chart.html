@@ -18,8 +18,13 @@
             $(datas).each(
                 function (index, element) {
                     // 각 배열에 x축, y축에 해당하는 값을 넣는다.
-                    labels.push(element.date);
-                    labelDatas.push(element.close);
+                    // labels.push(element.date);
+                    // labelDatas.push(element.close);
+
+                    // 배열의 가장 앞에 요소를 추가한다.
+                    // 좌측부터 날짜순으로 차트가 그려진다.
+                    labels.unshift(element.date);
+                    labelDatas.unshift(element.close);
                 }
             );
 
