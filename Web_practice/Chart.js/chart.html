@@ -21,7 +21,14 @@
                     labels.push(element.date);
                     labelDatas.push(element.close);
                 }
-            )
+            );
+
+            // chartContainer 태그 하위의 canvas 태그를 지운다.
+            $("#chartContainer canvas").remove();
+            
+            // canvas 태그를 붙인다.
+            // 선택 회사 변경에 따라 차트가 알맞게 생성된다.
+            $("#chartContainer").append("<canvas id=\"myChart\"></canvas>");
 
             const ctx = document.getElementById("myChart");
             new Chart(ctx, {
@@ -40,7 +47,10 @@
                 options: {
                 scales: {
                     y: {
-                    beginAtZero: true
+                    // beginAtZero : y축 시작 지점(0)에 대한 유무를 결정한다.
+                    // true로 설정 시, y축 시작 지점이 0으로 설정돼 값의 변동폭을
+                    // 정확히 파악하기 어려워질 수 있다.
+                    beginAtZero: false
                     }
                 }
                 }
@@ -109,7 +119,7 @@
             </div>
           </div>
           <div class="table-responsive" id="chartContainer" style="height: 400px;">
-              <canvas id="myChart"></canvas>
+              <!-- <canvas id="myChart"></canvas> -->
           </div>
     </main>
 </body>
