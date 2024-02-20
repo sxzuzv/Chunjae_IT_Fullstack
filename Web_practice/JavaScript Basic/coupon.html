@@ -25,6 +25,9 @@
         }
 
         document.getElementById('closeBtn').onclick = function() {
+            // 세팅된 쿠키 값을 확인한다.
+            console.log(getCookie("todayHidden"));
+
             // 레이어 팝업창 내의 '닫기' 클릭 시, 팝업창 노출을 막는다.
             // '닫기' 클릭 시, <a> 태그에 설정된 링크로 이동하는 이중 클릭이 발생한다.
             // 해당 작업을 막기 위해 반환값을 설정한다.
