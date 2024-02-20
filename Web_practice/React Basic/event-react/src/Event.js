@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
 class Event extends Component {
+    state = {
+        message: ''
+    }
+
     render() {
         return (
             <div>
@@ -10,10 +14,17 @@ class Event extends Component {
                 onChange={
                     (e) => {
                         // 넘겨 받는 파라미터의 target에 접근해 name, value 값을 출력한다.
-                        console.log(e.target.name, e.target.value);
+                        // console.log(e.target.name, e.target.value);
+
+                        // setState를 활용하여 입력되는 값을 message에 넣는다.
+                        this.setState({message : e.target.value})
                     }
                 }
-                />
+                /> <br />
+
+                {/* 현재 렌더링 영역 내부에 있음에 유의한다. => state만 데이터 수정이 가능하다. */}
+                {/* state에 정의된 message를 이용하여 신규 데이터로 만들 수 있도록 한다. */}
+                message : {this.state.message}
             </div>
         );
     }
