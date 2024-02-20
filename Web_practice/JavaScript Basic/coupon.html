@@ -17,7 +17,11 @@
   <script type="text/javascript" src="script/common.js"></script>
   <script type="text/javascript">
     function init(){
-        
+        document.getElementById('couponBtn').onclick = function() {
+            // style : DOM을 의미, property
+            // '쿠폰 다운' 버튼 클릭 시, 레이어 팝업을 띄운다.
+            document.getElementById('popup').style.display = 'block';
+        }
     }
       
     window.onload = init;
