@@ -6,12 +6,17 @@ class Event extends Component {
         username: ''
     }
 
-    handleChangeUsername = (e) => {
-        this.setState({username: e.target.value})
-    }
+    // e.target 내부에 있는 값 중 username, message와 일치하는 값을 저장한다.
+    // handleChangeUsername = (e) => {
+    //     this.setState({username: e.target.value})
+    // }
 
-    handleChangeMessage = (e) => {
-        this.setState({message: e.target.value})
+    // handleChangeMessage = (e) => {
+    //     this.setState({message: e.target.value})
+    // }
+
+    handleChange = (e) => {
+        this.setState({[e.target.name]: e.target.value})
     }
 
     render() {
@@ -20,12 +25,16 @@ class Event extends Component {
                 <h1>이벤트</h1>
                 <input type='text' name='message' placeholder='텍스트를 입력하세요.' 
                 // 텍스트 입력 시 발생될 이벤트를 작성한다. 이벤트 발생 시, 함수가 실행된다.
-                    onChange={this.handleChangeMessage} />
+                    // onChange={this.handleChangeMessage} 
+                    onChange={this.handleChange}
+                    />
                 <br />
 
                 <input type='text' name='username' placeholder='이름을 입력하세요.' 
                 // 텍스트 입력 시 발생될 이벤트를 작성한다. 이벤트 발생 시, 함수가 실행된다.
-                    onChange={this.handleChangeUsername} />
+                    // onChange={this.handleChangeUsername} 
+                    onChange={this.handleChange}
+                    />
                 <br />
 
 
