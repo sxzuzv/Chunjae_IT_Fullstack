@@ -22,6 +22,14 @@
             // '쿠폰 다운' 버튼 클릭 시, 레이어 팝업을 띄운다.
             document.getElementById('popup').style.display = 'block';
         }
+
+        document.getElementById('closeBtn').onclick = function() {
+            // 레이어 팝업창 내의 '닫기' 클릭 시, 팝업창 노출을 막는다.
+            // '닫기' 클릭 시, <a> 태그에 설정된 링크로 이동하는 이중 클릭이 발생한다.
+            // 해당 작업을 막기 위해 반환값을 설정한다.
+            document.getElementById('popup').style.display = 'none';
+            return false;
+        }
     }
       
     window.onload = init;
@@ -35,7 +43,7 @@
     </div>
     <a href="#" id="printBtn"><img src="images/printBtn.jpg"/></a>
     <a href="#" id="closeBtn"><img src="images/closeBtn.jpg"/></a>
-    <div class="hiddenCheck"><a href="#" id="hiddenBtn">[오늘하루 안보이기]</a></div>
+    <div class="hiddenCheck"><a href="#" id="hiddenBtn">[오늘 하루 안 보이기]</a></div>
   </div>  
  </body>
 </html>
