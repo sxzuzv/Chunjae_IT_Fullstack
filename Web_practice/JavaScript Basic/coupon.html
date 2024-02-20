@@ -37,6 +37,15 @@
             window.print();
             return false;
         }
+
+        document.getElementById('hiddenBtn').onclick = function() {
+            // 레이어 팝업창 내의 '오늘 하루 안 보이기' 클릭 시, 쿠키를 세팅한다.
+            // 쿠키 세팅은 domain이 있어야 가능하다.
+            setCookie('todayHidden', 'Y', 1)    // 쿠키 이름, 값, 유지 기한
+            // 레이어 팝업창을 닫기 위해 '닫기' 버튼 클릭 이벤트를 발생시킨다.
+            document.getElementById('closeBtn').onclick();
+            return false;
+        }
     }
       
     window.onload = init;
