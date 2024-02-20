@@ -30,6 +30,12 @@
             document.getElementById('popup').style.display = 'none';
             return false;
         }
+
+        document.getElementById('printBtn').onclick = function() {
+            // 레이어 팝업창 내의 '인쇄하기' 클릭 시, 인쇄창을 띄운다.
+            window.print();
+            return false;
+        }
     }
       
     window.onload = init;
