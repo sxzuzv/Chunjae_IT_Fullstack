@@ -13,7 +13,10 @@ class App extends Component {
         <LifeCycle color = {this.state.color} />
         {/* 버튼 클릭 시, state의 color가 'blue'로 변경되며 내려주는 color가 'blue'로 변경된다. */}
         <button onClick={() => {
-          this.setState({color:'blue'});
+          // this.setState({color:'blue'});
+
+          // shouldComponentUpdate 활용을 위한 color 변경
+          this.setState({color:'green'});
         }}>BLUE</button>
       </div>
     );

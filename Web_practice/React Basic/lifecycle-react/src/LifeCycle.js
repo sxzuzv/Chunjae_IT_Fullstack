@@ -50,6 +50,12 @@ class LifeCycle extends Component {
         }
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log('shouldComponentUpdate', nextProps, nextState);
+        
+        return nextProps === 'green' ? false : true;
+    }
+
     render() {
         console.log('render');
         return (
