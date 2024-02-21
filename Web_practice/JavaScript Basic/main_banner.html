@@ -13,11 +13,19 @@
 
             for (let index = 0; index < aTagList.length; index++) {
                 aTagList[index].onmouseover = function() {
+                    // 사용자가 라디오에 마우스를 올렸을 시, 자동으로 배너가 넘어가는 것을 멈춘다.
+                    clearInterval(sId);
 
                     // 자기 자신의 num 속성을 가져와서 저장한다.
                     const myNum = this.getAttribute("num");
 
                     changeMenu(myNum);
+                }
+
+                // 사용자가 배너 바깥으로 마우스를 옮겼을 경우, 자동으로 배너가 넘어간다.
+                aTagList[index].onmouseout = function() {
+                    // 다시 인터벌을 걸어준다. (sId가 증가한다.)
+                    sId = setInterval(myTimer, 3000);
                 }
             }
 
@@ -41,6 +49,32 @@
                     }
                 }
             }
+
+            // setInterval에 등록할 함수 myTimer
+            // 사용자 액션이 없을 시, 현재 보고 있는 배너를 자동으로 넘긴다.
+            const myTimer = function() {
+                // 선택된 <a> 태그의 정보를 저장한다.
+                const aTag = buttonList.getElementsByClassName("on")[0];
+                // 선택된 <a> 태그의 num 속성을 저장한다.
+                // 문자형을 숫자로 파싱한다.
+                const currentNum = parseInt(aTag.getAttribute("num"));  // 1, 2, 3, 4
+
+                // currentNum은 const로 정의하였으므로 값의 재정의가 불가하다.
+                // 재정의가 가능한 타입으로 설정해준다.
+                let nextNum = currentNum + 1;
+
+                // 끝까지 배너가 넘어갔다면 처음 배너로 돌아오게 한다.
+                if(nextNum >= aTagList.length + 1) {
+                    nextNum = 1;
+                }
+
+                changeMenu(nextNum);
+
+                // console.log(currentNum, typeof(currentNum),parseInt(currentNum));
+            }
+
+            // Interval에 함수를 등록한다. (3초 간격으로 함수 실행)
+            let sId = setInterval(myTimer, 3000);
         }
 
 	  window.onload = init;
