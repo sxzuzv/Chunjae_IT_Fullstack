@@ -8,6 +8,15 @@ class LifeCycle extends Component {
         color:null
     }
 
+    constructor(props) {
+        super(props);
+        console.log('constructor');
+    }
+
+    componentDidMount() {
+        console.log('componentDidMount');
+    }
+
     static getDerivedStateFromProps(nextProps, prevState) {
         // 현재 들어오는 props 값과 이전의 state 값을 매개변수로 전달받는다.
         // console.log(nextProps, prevState);
