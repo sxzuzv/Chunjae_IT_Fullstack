@@ -6,24 +6,29 @@
   <link href="css/style.css" type="text/css" rel="stylesheet" />
   <script type="text/javascript">
 	  const init = function() {
-		const buttonList = document.getElementById("buttonList");
-		const aTagList = buttonList.getElementsByTagName("a");
-        const bannerList = document.getElementById("bannerList");
-        const liList = bannerList.getElementsByTagName("li");
+            const buttonList = document.getElementById("buttonList");
+            const aTagList = buttonList.getElementsByTagName("a");
+            const bannerList = document.getElementById("bannerList");
+            const liList = bannerList.getElementsByTagName("li");
 
-        for (let index = 0; index < aTagList.length; index++) {
-            aTagList[index].onmouseover = function() {
+            for (let index = 0; index < aTagList.length; index++) {
+                aTagList[index].onmouseover = function() {
 
-                // 자기 자신의 num 속성을 가져와서 저장한다.
-                const myNum = this.getAttribute("num");
+                    // 자기 자신의 num 속성을 가져와서 저장한다.
+                    const myNum = this.getAttribute("num");
 
+                    changeMenu(myNum);
+                }
+            }
+
+            const changeMenu = function(myNum) {
                 // buttonList 하위에 ClassName이 "on"인 것들을 가져온다.
                 // console.log(buttonList.getElementsByClassName("on"));
 
                 // <a> 태그 리스트를 돌면서 ClassName을 하나씩 가져올 수도 있다.
                 for (let i = 0; i < aTagList.length; i++) {
-                    // <a> 태그의 num 속성과 자기 자신의 num 속성을 차례로 출력한다.
-                    // console.log(aTagList[i].getAttribute("num"), this.getAttribute("num"));
+                // <a> 태그의 num 속성과 자기 자신의 num 속성을 차례로 출력한다.
+                // console.log(aTagList[i].getAttribute("num"), this.getAttribute("num"));
 
                     // num 속성이 동일한 <a> 태그에 맞춰 버튼과 배너 전환이 이루어지도록 한다.
                     // class 속성의 값이 "on"일 시, 효과가 적용된다.
@@ -35,12 +40,8 @@
                         liList[i].className = "";
                     }
                 }
-
-                // HTML Class 속성은 DOM의 className이 된다.
-                // this.className = "on";
             }
         }
-	  }
 
 	  window.onload = init;
   </script>
