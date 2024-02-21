@@ -30,8 +30,8 @@ class MoveBox extends Component {
             <>
                 <div style={style}>
                     <div style={innerstyle} ref={(ref) => {this.box = ref}} />
-                    <button onClick={() => {this.move(100, 100)}}>MOVE01</button>
                 </div>
+                <button onClick={() => {this.move(100, 100)}}>MOVE01</button>
             </>
         );
     }
