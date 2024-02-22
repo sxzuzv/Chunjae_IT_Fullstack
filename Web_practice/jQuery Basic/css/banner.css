@@ -1,0 +1,42 @@
+/* reset */
+html,body,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,address,big,cite,code,del,dfn,em,font,img,ins,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,ul,ol,li,dl,dt,dd,table,caption,tbody,tfoot,thead,tr,th,td,fieldset,form,label,legend,input,button,textarea,select{margin:0;padding:0}
+header,footer,section,article,aside,nav,hgroup,details,menu,figure,figcaption{display:block;margin:0;padding:0}
+legend{display:block;overflow:hidden;position:absolute;width:1px;height:1px;font-size:1px;line-height:0;text-indent:-999em;white-space:nowrap}
+fieldset,img,table,caption,tbody,tfoot,thead,tr,th,td,button,hr{border:0 none}
+address,caption,cite,code,dfn,em,strong,th,var{font-style:normal}
+blockquote,q{quotes:'none'}
+ins{text-decoration:none}
+del{text-decoration:line-through}
+img{vertical-align:middle}
+wbr:after{content:'\00200B'}
+wbr{display:block\9;width:0;height:0;margin:0;padding:0}
+body li{*vertical-align:top}
+ul li{list-style:none}
+caption{width:0;height:0;font-size:0;line-height:0;text-indent:-999em}
+.blind{visibility:hidden;overflow:hidden;position:absolute;top:-1px;left:-1px;width:1px;height:1px;font-size:0;line-height:0}
+body{position:relative;line-height:1.5em;font-size:.75em;font-family:'Apple SD Gothic Neo',AppleGothic,'돋움',Dotum,Tahoma,Verdana,Geneva,Arial,Helvetica,sans-serif;}
+hr{display:none}
+/* layout_sd.css */
+html { height:100% }
+a:link{text-decoration:none; color:#666}
+a:visited{text-decoration:none; color:#666}
+dl,ul,ol,menu,li{list-style:none}
+strong {font-weight:bold}
+.chk,.rdo{width:13px;height:13px;margin:-1px 0 0!important;padding:0 !important;vertical-align:middle}
+.label{line-height:1 !important;vertical-align:middle}
+:root .label{position:relative \9;top:1px \9}
+.dpn{display:none !important}
+.fclear{*zoom:1}
+.fclear:after{display:block;clear:both;content:''}
+
+.visual_bnr_new{overflow:visible;position:relative;z-index:10;float:left;width:848px;height:515px}
+.visual_bnr_new .bx-wrapper{position:relative;z-index:100}
+.visual_bnr_new .bx-wrapper,.visual_bnr_new .bx-viewport{height:100%}
+.visual_bnr_new .img_area{height:515px}
+.visual_bnr_new .img_area img{vertical-align:top}
+.visual_bnr_new .btn_box{position:absolute;bottom:9px;left:0px;right:0;z-index:200;background:url(../images/bg_opct80.png)}
+.visual_bnr_new .btn_box .bn{position:relative;float:left;width:170px;left:auto !important} /* left 속성, main_sd.css 함께 배포될경우 적용 */
+.visual_bnr_new .btn_box .bn:first-child{width:168px}
+.visual_bnr_new .btn_box .bn a{overflow:hidden;position:relative;z-index:2;display:block;height:60px;padding:0 10px;font-family:'나눔바른고딕',NanumBarunGothic,'Apple SD Gothic Neo',AppleGothic,'돋움',Dotum,sans-serif;font-size:13px;line-height:63px;color:#727272;text-align:center;letter-spacing:-0.5px;text-overflow:ellipsis;white-space:nowrap}
+.visual_bnr_new .btn_box .bn.on a{background:#85878a;color:#fff}
+.visual_bnr_new .btn_box .bn.none a{display:inline-block;width:0;vertical-align:top}
