@@ -19,6 +19,49 @@
                 }
             )
             $("#banner div").css({float:"left"});
+
+            $("#tab a").each(
+                function(index, element) {
+                    // tab id 하위의 <a> 태그를 하나씩 출력한다.
+                    // console.log(index, element);
+
+                    // <a> 태그에 index 번호를 붙여준다.
+                    $(element).data("index", index);
+                }
+            )
+
+            $("#tab a").on(
+                "mouseenter",
+                function(e) {
+                    // <a> 태그 이중 클릭 방지 (<a> 태그로 연결된 링크에 자동 접속되지 않도록 한다.)
+                    e.preventDefault();
+
+                    // 마우스가 올라가면 <div> 태그 클래스 이름의 on을 지운다.
+                    $("#tab div.on").removeClass("on");
+
+                    // $(this) = <a> 태그 위치 = 마우스가 올라간 태그
+                    // parent().addClass("on") : <a> 태그의 부모 태그로 올라가서 클래스 이름에 "on"을 붙인다.
+                    $(this).parent().addClass("on");
+
+                    // 각 <a> 태그에 붙여준 index를 확인한다.
+                    // console.log($(this).data("index"));
+
+                    // 마우스가 올라간 <a> 태그의 index를 저장한다.
+                    const index = $(this).data("index");
+
+                    // 마우스 커서를 옮길 시, 이전 애니메이션이 멈추기 전까지 애니메이션이 동작하지 않는 오류가 발생한다.
+                    // 애니메이션 큐의 문제점 해결을 위해, .stop()을 적용해 현재 동작 중인 애니메이션을 즉시 중단시킨다.
+                    // 다른 종류의 큐를 중단하고 싶다면 .clearQueue() 함수를 사용한다.
+                    $("#banner").stop().animate(
+                        {
+                            // index가 0이면 그대로 있고, index가 1이면 첫 번째 사진을 보여주면 된다.
+                            // 예시) 두 번째 메뉴(index가 1)에 마우스를 옮기면, 사진은 -(848*1)px 만큼 이동하면 된다.
+                            // 사진 크기에 맞춰서 이동할 범위를 정해준다.
+                            left:"-"+(848*index)+"px"
+                        }, 600, "easeOutQuart" // 0.6초 간, 처음엔 빠르게 끝은 느리게 이동한다.
+                    );
+                }
+            );
         }
     );
   </script>
