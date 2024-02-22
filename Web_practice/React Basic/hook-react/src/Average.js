@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useMemo, useState} from 'react';
 
 // 입력 값의 평균을 구하는 함수 (입력 값을 담은 list를 매개변수로 받는다.)
 const getAverage = (numbers) => {
@@ -34,6 +34,10 @@ const Average = () => {
         setNumber('');
     };
 
+    // 필요할 때만 평균을 계산하여 출력할 수 있도록 useMemo()를 적용한다.
+    // '등록' 버튼을 누를 때만 평균을 계산한다.
+    const avg = useMemo(() => getAverage(list), [list]);
+
     return (
         <div>
             {/* value 값을 지정해줘야 하는 이유는? */}
@@ -44,7 +48,8 @@ const Average = () => {
                 {/* <input>으로 받을 출력한다. */}
                 {list.map((value, index) => <li key={index}>{value}</li>)}
             </ul>
-            평균 : {getAverage(list)}
+            {/* 평균 : {getAverage(list)} */}
+            평균 : {avg}
         </div>
     );
 };
