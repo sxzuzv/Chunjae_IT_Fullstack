@@ -48,7 +48,7 @@ const Average = () => {
 
         setNumber('');
     }, [number, list]); // 괄호 속에 적어준 값이 변경될 때에만 반영한다.
-    // number와 list의 값이 바뀔 때 반영된다. => setLsist, setNumber 함수를 새로 만든다.
+    // number와 list의 값이 바뀔 때 반영된다. => setList, setNumber 함수를 새로 만든다.
     // 추적할 값을 지정하지 않으면 Mount 될 때만 실행하라는 의미로 이해한다.
     // Mount 되는 값은 Set을 만들어서 저장하도록 해뒀다.
 
