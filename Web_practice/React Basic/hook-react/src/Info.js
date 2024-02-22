@@ -8,7 +8,8 @@ const Info = () => {
     useEffect(() => {
         console.log("렌더링 완료");
         console.log({name});
-    })    
+    },
+    []);    // [] 추가 이후 : Mount 될 때만 useEffect가 실행된다.
 
     return (
         <div>
