@@ -6,12 +6,45 @@
     <title>animate</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+
+    <script type="text/javascript">
+        // 페이지 로드가 완료되면 실행된다. (window.onload의 개념)
+        $(document).ready(function() {
+            // console.log("ready!");
+            
+            // 함수 안에 또다른 함수 => javascript의 맹점
+            $("#moveBtn").on(
+                "click", function() {
+                    // MOVE 버튼 클릭 시, 지정한 스타일에 따라 상자가 변화 및 움직인다.
+                    // <div> 태그의 style이 변경된다.
+                    $("#box").animate(
+                        {
+                            left:"500px",
+                            top:"300px",
+                            width:"50px",
+                            // 상자가 사라진다. (불투명도를 0으로 감소시킨다.)
+                            opacity:0
+                            // "easeInQuart" : 처음에는 느리게, 끝으로 갈수록 빠르게
+                            // "easeOutQuart" : 처음에는 빠르게, 끝으로 갈수록 느리게
+                        },1000,"easeOutQuart",
+                        function() {
+                            // 애니메이션이 종료된 후 출력된다.
+                            console.log("animate end");
+                        }
+                    );
+                }
+            );
+        });
+    </script>
 </head>
 <body>
     <button id="moveBtn">MOVE</button>
     <hr />
     <div 
     id="box"
-    style="width:100px;height:100px;background-color: red;"></div>
+    style="width:100px;height:100px;
+    background-color:red;
+    position:absolute;
+    top:100px"></div>
 </body>
 </html>
