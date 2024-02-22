@@ -16,6 +16,9 @@ const getAverage = (numbers) => {
     return sum / numbers.length;
 }
 
+// Set 정의
+const setOne = new Set();
+
 const Average = () => {
     const [list, setList] = useState([]);
 
@@ -33,6 +36,9 @@ const Average = () => {
         // 입력 값을 초기화한다.
         setNumber('');
     };
+
+    setOne.add(onClick);
+    console.log(setOne);
 
     // 필요할 때만 평균을 계산하여 출력할 수 있도록 useMemo()를 적용한다.
     // '등록' 버튼을 누를 때만 평균을 계산한다.
