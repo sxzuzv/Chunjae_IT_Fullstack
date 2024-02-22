@@ -1,9 +1,7 @@
-import React, {useMemo, useState} from 'react';
+import React, {useCallback, useMemo, useState} from 'react';
 
 // 입력 값의 평균을 구하는 함수 (입력 값을 담은 list를 매개변수로 받는다.)
 const getAverage = (numbers) => {
-    console.log("평균을 구할게요!");
-
     // 입력 값이 없을 때 평균은 0
     if (numbers.length === 0) return 0;
 
@@ -27,18 +25,28 @@ const Average = () => {
     const [number, setNumber] = useState('');
 
     // 등록 버튼을 누를 시, 실행 된다.
-    const onClick = () => {
+    // const onClick = () => {
         // 반드시 신규 값으로 넣어줘야 수정 사항이 반영된다. => concat 사용
         // number의 타입이 문자형이므로 정수형으로 parse 해준다.
         // parse 된 값들을 list에 저장한다.
-        setList(list.concat(parseInt(number)));
+        // setList(list.concat(parseInt(number)));
         
         // 입력 값을 초기화한다.
+    //     setNumber('');
+    // };
+
+    // 등록 버튼을 누를 시, 실행 된다.
+    // useCallback 사용 : onClick 함수를 useCallback으로 감싸준다.
+    const onClick = useCallback(() => {
+        setList(list.concat(parseInt(number)));
         setNumber('');
-    };
+    }, [number, list]); // 괄호 속에 적어준 값이 변경될 때에만 반영한다.
+    // number와 list의 값이 바뀔 때 반영된다.
+    // 추적할 값을 지정하지 않으면 Mount 될 때만 실행하라는 의미로 이해한다.
+    // Mount 되는 값은 Set을 만들어서 저장하도록 해뒀다.
 
     setOne.add(onClick);
-    console.log(setOne);
+    console.log('setOne', setOne);
 
     // 필요할 때만 평균을 계산하여 출력할 수 있도록 useMemo()를 적용한다.
     // '등록' 버튼을 누를 때만 평균을 계산한다.
