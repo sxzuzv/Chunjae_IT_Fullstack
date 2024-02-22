@@ -9,7 +9,8 @@ const Info = () => {
         console.log("렌더링 완료");
         console.log({name});
     },
-    []);    // [] 추가 이후 : Mount 될 때만 useEffect가 실행된다.
+    [name]);    
+    // [] 추가 이후 : Mount 될 때만 useEffect가 실행된다. 내부에 값을 포함하면 해당 값이 업데이트 될 때만 실행된다.
 
     return (
         <div>
