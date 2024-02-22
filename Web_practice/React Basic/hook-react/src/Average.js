@@ -1,5 +1,21 @@
 import React, {useState} from 'react';
 
+// 입력 값의 평균을 구하는 함수 (입력 값을 담은 list를 매개변수로 받는다.)
+const getAverage = (numbers) => {
+    console.log("평균을 구할게요!");
+
+    // 입력 값이 없을 때 평균은 0
+    if (numbers.length === 0) return 0;
+
+    // reduce() : 배열에 있는 두 개의 값을 가지고 와서 합친 뒤, 자기 자신의 a에 넣는다.
+    // 다음으로 a와 c를 가지고 와서 합치고, ...
+    // 즉, list에 있는 값들을 모두 더하는 작업을 하게 된다.
+    const sum = numbers.reduce((a, b) => a + b);
+
+    // '입력 값의 총합 / 입력 값의 개수'를 계산해 반환한다.
+    return sum / numbers.length;
+}
+
 const Average = () => {
     const [list, setList] = useState([]);
 
@@ -28,7 +44,7 @@ const Average = () => {
                 {/* <input>으로 받을 출력한다. */}
                 {list.map((value, index) => <li key={index}>{value}</li>)}
             </ul>
-            평균 : 
+            평균 : {getAverage(list)}
         </div>
     );
 };
