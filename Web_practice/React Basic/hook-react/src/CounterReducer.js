@@ -7,7 +7,11 @@ function reducer(state, action) {
             // state에서 count를 관리하며 state의 count 값을 증가시킨다.
             return {count:state.count + 1};
         case 'DEC' :
-            return {count:state.count - 1};
+            // return {count:state.count - 1};
+
+            // setState로 값을 관리하는 것보다 useReducer 활용 시, 다양한 관리가 가능하다.
+            const nextCount = state.count - 1;
+            return {count:nextCount < 0 ? 0 : nextCount};
         // switch-case문은 default가 반드시 존재해야 한다.
         default :
             return state;
