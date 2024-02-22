@@ -1,4 +1,4 @@
-import React, {useCallback, useMemo, useState} from 'react';
+import React, {useCallback, useMemo, useRef, useState} from 'react';
 
 // 입력 값의 평균을 구하는 함수 (입력 값을 담은 list를 매개변수로 받는다.)
 const getAverage = (numbers) => {
@@ -35,13 +35,20 @@ const Average = () => {
     //     setNumber('');
     // };
 
+    // useRef 선언
+    const inputEl = useRef(null);
+
     // 등록 버튼을 누를 시, 실행 된다.
     // useCallback 사용 : onClick 함수를 useCallback으로 감싸준다.
     const onClick = useCallback(() => {
         setList(list.concat(parseInt(number)));
+
+        // current 붙이는 것에 유의!
+        inputEl.current.focus();
+
         setNumber('');
     }, [number, list]); // 괄호 속에 적어준 값이 변경될 때에만 반영한다.
-    // number와 list의 값이 바뀔 때 반영된다. => setlist, setNumber 함수를 새로 만든다.
+    // number와 list의 값이 바뀔 때 반영된다. => setLsist, setNumber 함수를 새로 만든다.
     // 추적할 값을 지정하지 않으면 Mount 될 때만 실행하라는 의미로 이해한다.
     // Mount 되는 값은 Set을 만들어서 저장하도록 해뒀다.
 
@@ -56,7 +63,9 @@ const Average = () => {
         <div>
             {/* value 값을 지정해줘야 하는 이유는? */}
             {/* number는 state로 관리 중인 값이고, onClick 메서드의 행위를 하려면 number로 연결이 돼있어야 한다. */}
-            <input name='number' value={number} onChange={(e) => setNumber(e.target.value)}/>
+
+            {/* <input> 태그에 자동으로 포커스가 가는 작업을 지정하기 위해 useRef를 사용한다. */}
+            <input name='number' value={number} onChange={(e) => setNumber(e.target.value)} ref={inputEl} />
             <button onClick={onClick}>등록</button> number : {number} <br />
             <ul>
                 {/* <input>으로 받을 출력한다. */}
