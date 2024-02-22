@@ -9,9 +9,18 @@
   <script type="text/javascript">
     $(document).ready(
         function() {
+            // 배너 출력 형태를 변경한다. : 세로 -> 가로
+            $("#banner").css(
+                // 배너 이미지가 포함되는 상위 <div> 태그의 너비를 지정한다.
+                {
+                    width:(848*5)+"px",
+                    position:'absolute',
+                    left:'0px'
+                }
+            )
             $("#banner div").css({float:"left"});
         }
-    )
+    );
   </script>
  </head>
  <body style="padding:100px;">
