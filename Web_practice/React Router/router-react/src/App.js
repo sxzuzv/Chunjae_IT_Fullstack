@@ -2,6 +2,7 @@ import React from'react';
 import{Route,Routes}from'react-router-dom';
 import About from'./pages/About';
 import Home from'./pages/Home';
+import Profile from './pages/Profile';
 
 const App=()=>{
   return(
@@ -11,6 +12,9 @@ const App=()=>{
       {/* 주소로 한 번 접속하면 HTML 내려 받고, 이후에는 또 내려 받지 않는다. => SPA의 기본 개념 */}
       <Route path='/' element={<Home/>}/>
       <Route path='/about' element={<About/>}/>
+
+      {/* 파라미터를 ':파라미터명' 형태로 넣어준다. */}
+      <Route path='/profiles/:id' element={<Profile />} />
     </Routes>
   );
 };
