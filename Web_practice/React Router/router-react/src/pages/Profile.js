@@ -20,8 +20,7 @@ const Profile = () => {
         <div>
             <h1>사용자 프로필</h1>
             {/* profile 값의 유무에 따라 출력 내용을 결정한다. */}
-            {profile ? ( <div><h2>{profile.name}</h2>
-            <p>{profile.desc}</p></div>) : (<p>존재하지 않는 프로필입니다.</p>)}
+            {profile ? ( <div><h2>{profile.name}</h2><p>{profile.desc}</p></div>) : (<p>존재하지 않는 프로필입니다.</p>)}
         </div>
     );
 };
