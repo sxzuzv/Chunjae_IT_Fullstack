@@ -3,6 +3,8 @@ import{Route,Routes}from'react-router-dom';
 import About from'./pages/About';
 import Home from'./pages/Home';
 import Profile from './pages/Profile';
+import Articles from './pages/Articles';
+import Article from './pages/Article';
 
 const App=()=>{
   return(
@@ -15,6 +17,13 @@ const App=()=>{
 
       {/* 파라미터를 ':파라미터명' 형태로 넣어준다. */}
       <Route path='/profiles/:id' element={<Profile />} />
+
+      {/* 라우팅 경로를 세팅해준다. */}
+      {/* 중첩된 라우트를 설정한다. */}
+      <Route path='/articles' element={<Articles />} >
+      {/* <Route path='/articles/:id' element={<Article />} /> */}
+        <Route path=':id' element={<Article />} />
+      </Route>
     </Routes>
   );
 };
