@@ -9,9 +9,11 @@ import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  // App.js = 하나의 싱글 페이지
+  // URL처럼 받아서 BrowserRouter가 제어해주는 역할을 하게 된다.
+  <BrowserRouter>
     <App />
-  </React.StrictMode>
+  </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function
