@@ -7,6 +7,10 @@ const Layout = () => {
         navigate(-1); // 뒤로가기
     }
     const goArticles = () => {
+        // 이동한 페이지에 대한 history가 남게 되는데,
+        // 해당 history 중 보안상 노출되지 않아야 하는 페이지의 경우
+        // replace: true 속성을 통해 history에 남기지 않을 수 있다.
+        // 직전의 페이지만 history에 남지 않게 한다.
         navigate('/articles', {replace:true});
     };
 
