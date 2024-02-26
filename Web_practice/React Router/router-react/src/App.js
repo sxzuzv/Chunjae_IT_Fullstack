@@ -6,6 +6,7 @@ import Profile from './pages/Profile';
 import Articles from './pages/Articles';
 import Article from './pages/Article';
 import Layout from './pages/Layout';
+import NotFound from './pages/NotFound';
 
 const App=()=>{
   return(
@@ -41,6 +42,8 @@ const App=()=>{
       <Route path='/articles' element={<Articles />} >
         <Route path=':id' element={<Article />} />
       </Route>
+      {/* 잘못된 접근에 대한 NotFound 페이지 */}
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };
