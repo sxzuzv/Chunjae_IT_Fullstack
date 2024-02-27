@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import axios from '../node_modules/axios/index';
 
-function App() {
+const App = () => {
+  const [data, setData] = useState(null);
+  const onClick = () => {
+    // axios : 응답이 오면 알려준다.
+    axios.get('https://jsonplaceholder.typicode.com/todos/1').then(response => {setData(response)});
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button onClick={onClick}>불러오기</button>
+      {/* {data}로 출력하려고 하면 오류가 발생한다. Object type은 display 불가하므로 문자로 변환이 필요하다. */}
+      <div>
+        {data && <textarea value = {JSON.stringify(data)} />}
+      </div>
     </div>
   );
-}
+};
 
 export default App;
