@@ -7,8 +7,8 @@ const App = () => {
     // axios : 응답이 오면 알려준다.
     // axios.get('https://jsonplaceholder.typicode.com/todos/1').then(response => {setData(response)});
 
-    // async 적용
-    const response=await axios.get('https://jsonplaceholder.typicode.com/todos/1');
+    // async, News Api 적용
+    const response=await axios.get('https://newsapi.org/v2/top-headlines?country=kr&apiKey=e3aabbbc9e0148af8f9574ddc1ba0467');
     setData(response);
   };
 
