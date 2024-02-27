@@ -10,11 +10,16 @@ const NewsList = ({category}) => {
 
     const [articles, setArticles] = useState(null);
 
+    const [loading, setLoading] = useState(false);
+
 
     useEffect(
         () => {
         // fetchData() 실행되면 Api 데이터를 받아온다.
         const fetchData = async () => {
+            // loading 값을 true로 세팅한다.
+            setLoading(true);
+
             // props로 내려온 category가 '전체보기'일 경우, url을 유지한다.
             // 그렇지 않을 경우, 쿼리스트링을 이용하여 url을 변경한다.
             const query = category === 'all' ? '' : '&category='+category;
@@ -30,6 +35,9 @@ const NewsList = ({category}) => {
 
             // 데이터를 세팅해준다.
             setArticles(response.data.articles);
+
+            // 데이터를 세팅한 뒤, loading의 값을 false로 변경한다.
+            setLoading(false);
         };
         fetchData(); // 마운트 걸리면 fetchData() 실행된다.
     }, [category]
@@ -43,6 +51,11 @@ const NewsList = ({category}) => {
     if(!articles) {
         return null;
     }
+
+    if(loading) {
+        return <>뉴스 리스트를 가져오는 중 ..</>;
+    }
+
 
     return (
         <>
