@@ -12,8 +12,9 @@ const Header = () => {
                 <a className="p-2 text-dark" href="#">뉴스</a> */}
 
                 {/* SPA : <a> 태그 적용 불가, NavLink를 사용하여 Request URL을 유지하면서 페이지는 변경한다. */}
-                <NavLink className="p-2 text-dark active" to="/">HOME</NavLink>
-                <NavLink className="p-2 text-dark active" to="/news">NEWS</NavLink>
+                {/* isActive를 활용하여 header 우측의 'HOME' 혹은 'NEWS' 선택 효과를 준다. */}
+                <NavLink className={({isActive}) => (isActive ? "p-2 text-dark active" : "p-2 text-dark")} to="/">HOME</NavLink>
+                <NavLink className={({isActive}) => (isActive ? "p-2 text-dark active" : "p-2 text-dark")} to="/news">NEWS</NavLink>
             </nav>
     </div>
     );
