@@ -1,4 +1,4 @@
-html, body {color: #676767;font: 12px/15px "µ¸¿ò",Dotum,Tahoma,Arial;}  
+html, body {color: #676767;font: 12px/15px "ï¿½ï¿½ï¿½ï¿½",Dotum,Tahoma,Arial;}  
 div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {margin: 0;padding: 0;}
 img {border:none;}
 ol, ul, li {list-style: none;}
@@ -16,14 +16,14 @@ a{text-decoration:none;}
 .feature-banner__selector {position:absolute;bottom:5px;width:100%;padding:0;}
 .feature-banner__items>a, .feature-banner__first>a, .feature-banner__last>a {display:block;}
 
-/* Àü ÄÞÆ÷³ÍÆ® - ÀÎµðÄÉÀÌÅÍ */
+/* ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® - ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 .tmp-nav {height:23px;padding-top:8px;text-align:center;z-index:10}
 .tmp-nav a {display:inline-block;overflow:hidden;padding:3px;margin:0 2px;}
 .tmp-nav a span {display:block;overflow:hidden;width:10px;height:10px;border-radius:15px;background:#eeeeee;font:0/200% m;vertical-align:top;*display:inline;*zoom:1}
 .tmp-nav a.on span {background:#c2d40e}
 .tmp-nav.green a.on span {background-color:#00a4b4}
 
-/* 201601 tmp-nav ÀÌ¹ÌÁö»ç¿ë ½Å±Ô Å¬·¡½º */
+/* 201601 tmp-nav ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Å±ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ */
 .tmp-nav.img-dotted>a {padding:0;}
 .tmp-nav.img-dotted>a>span {width:18px;height:18px;background:url('../images/k_dotted_nav.png') no-repeat;border-radius:0;}
 .tmp-nav.img-dotted>a.on>span {background-position:-18px 0;}
