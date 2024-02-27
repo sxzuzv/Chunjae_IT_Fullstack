@@ -9,10 +9,12 @@ const NewsItem = ({article}) => {
     return (
         <div className="col-md-6">
             <div className="card mb-4 box-shadow">
-                <img className="card-img-top"
-                src="https://placehold.co/160X80"
-                alt="Card image cap"
-                />
+                {/* 썸네일의 경우, 있거나 null일 수 있음에 유의한다. */}
+                {/* urlToImage가 있을 시, 화면에 출력한다. */}
+                {urlToImage && <img className="card-img-top"
+                                src={urlToImage}
+                                alt="Card image cap"
+                />}
                 <div className="card-body">
                     <h4>{title}</h4>
                         <p className="card-text">
