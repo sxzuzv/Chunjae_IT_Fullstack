@@ -17,7 +17,7 @@ const NewsList = ({category}) => {
         const fetchData = async () => {
             // props로 내려온 category가 '전체보기'일 경우, url을 유지한다.
             // 그렇지 않을 경우, 쿼리스트링을 이용하여 url을 변경한다.
-            const query = category == 'all' ? '' : '&category='+category;
+            const query = category === 'all' ? '' : '&category='+category;
 
             const apiUrl = 'https://newsapi.org/v2/top-headlines?country=kr&apiKey=e3aabbbc9e0148af8f9574ddc1ba0467';
 

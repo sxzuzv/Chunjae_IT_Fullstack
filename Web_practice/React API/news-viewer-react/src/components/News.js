@@ -17,18 +17,19 @@ const News = () => {
     return (
         <section>
             <ul className="nav nav-tabs">
+                {/* state에 값이 저장돼 있으므로, 삼항 연산자를 이용하여 메뉴 선택 효과를 준다. */}
                 <li className="nav-item">
                     <a onClick={(e) => onselect(e, 'all')} className={category == 'all' ? 'nav-link active' : 'nav-link'} aria-current="page" href="#">
                         전체보기
                     </a>
                 </li>
                 <li className="nav-item">
-                    <a onClick={(e) => onselect(e, 'business')} className="nav-link active" aria-current="page" href="#">
+                    <a onClick={(e) => onselect(e, 'business')} className={category == 'business' ? 'nav-link active' : 'nav-link'} aria-current="page" href="#">
                         비즈니스
                     </a>
                 </li>
                 <li className="nav-item">
-                    <a onClick={(e) => onselect(e, 'entertainment')} className="nav-link active" aria-current="page" href="#">
+                    <a onClick={(e) => onselect(e, 'entertainment')} className={category == 'entertainment' ? 'nav-link active' : 'nav-link'} aria-current="page" href="#">
                         엔터테인먼트
                     </a>
                 </li>
