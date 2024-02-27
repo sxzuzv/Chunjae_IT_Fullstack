@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from '../../node_modules/react-router-dom/dist/index';
 
 const Home = () => {
     return (
@@ -10,9 +11,14 @@ const Home = () => {
                         헤드라인을 찾아보세요.
                     </p>
                     <p>
-                        <a href="#" className="btn btn-primary my-2">
+                        {/* <a href="#" className="btn btn-primary my-2">
                             메뉴 이동
-                        </a>
+                        </a> */}
+
+                        {/* <a> 태그 사용 불가 -> <NavLink> 변경 */}
+                        <NavLink to='/news' className="btn btn-primary my-2">
+                            메뉴 이동
+                        </NavLink>
                     </p>
             </div>
         </section>
