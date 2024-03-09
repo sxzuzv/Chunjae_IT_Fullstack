@@ -7,7 +7,7 @@
 
 ### 📂 레포지토리 구성
 • [TIL](https://github.com/sxzuzv/Chunjae_IT_Fullstack/tree/main/TIL) : 학습한 내용을 기록합니다.<br>
-• [Web_practice](https://github.com/sxzuzv/Chunjae_IT_Fullstack/tree/main/Web_practice) : HTML + CSS + JavaScript + React 학습 내용을 기록합니다.
+• [Web_practice](https://github.com/sxzuzv/Chunjae_IT_Fullstack/tree/main/Web_practice) : HTML + CSS + JavaScript + React + jQuery 학습 내용을 기록합니다.
 <br><br>
 
 <!-- ### 📚 학습 교재 -->
